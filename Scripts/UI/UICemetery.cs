@@ -14,6 +14,6 @@ public partial class UICemetery : Control
 
     public void AddGrave(AUIGrave uiGrave)
     {
-        AddChild(uiGrave);
+        GravesHolder.AddChild(uiGrave);
     }
 }
