@@ -8,6 +8,7 @@ public partial class Level : Node
 
     [Export] private LevelGenerator Generator;
     [Export] private UILevel uiLevel;
+    [Export] private UIConversationPlayer conversationPlayer;
 
     private List<AGrave> Graves;
     private List<Coffin> Coffins;
@@ -19,5 +20,6 @@ public partial class Level : Node
         Coffins = Generator.GenerateCoffins(level);
         Graves = Generator.GenerateGraves(level, SaveData);
         uiLevel.Init(Graves, Coffins);
+        conversationPlayer.BeginConversation(level.Events);
     }
 }
