@@ -6,3 +6,5 @@
 [node name="UISingleGrave" node_paths=PackedStringArray("Icon") instance=ExtResource("1_25enn")]
 script = ExtResource("2_25enn")
 Icon = NodePath("TextureRect")
+CanDropOutline = Color(0.639216, 0.619608, 0.333333, 1)
+HoverOutline = Color(1, 1, 1, 1)

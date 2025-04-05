@@ -2,13 +2,14 @@ shader_type canvas_item;
 
 uniform vec3 outlineColor : source_color;
 uniform bool showOutline;
+uniform vec4 modulate : source_color = vec4(1, 1, 1, 1);
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	COLOR = texture(TEXTURE, UV); //read from texture
+	COLOR = texture(TEXTURE, UV) * modulate; //read from texture
 	if (COLOR.a < 0.1 && showOutline)
 	{
 		COLOR.rgb = outlineColor;

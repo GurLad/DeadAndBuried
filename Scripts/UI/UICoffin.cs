@@ -13,6 +13,7 @@ public partial class UICoffin : Control
     [Export] private bool CanDrag { get; set; } = true;
     [Export] private TextureRect Icon;
     [ExportCategory("Highlight")]
+    [Export] private Color BaseModulate { get; set; }
     [Export] private float HeldOpacity { get; set; } = 0.6f;
     [Export] private Color HoverOutline { get; set; }
 
@@ -50,6 +51,7 @@ public partial class UICoffin : Control
     public void CancelDrop()
     {
         Highlight &= ~HighlightMode.Held;
+        RenderHighlight();
     }
 
     public void Render(Coffin coffin)
@@ -72,8 +74,8 @@ public partial class UICoffin : Control
         {
             return;
         }
-        Modulate = new Color(Modulate, (Highlight & HighlightMode.Held) != HighlightMode.None ? HeldOpacity : 1);
-        ShaderMaterial.Set("showOutline", (Highlight & HighlightMode.Hover) != HighlightMode.None);
+        ShaderMaterial.SetShaderParameter("modulate", new Color(BaseModulate, (Highlight & HighlightMode.Held) != HighlightMode.None ? HeldOpacity : 1));
+        ShaderMaterial.SetShaderParameter("showOutline", (Highlight & HighlightMode.Hover) != HighlightMode.None && UICursor.Current.HeldCoffin == null);
     }
 
     private void OnMouseEntered()

@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://4vgdtsf62fkw"]
+[gd_scene load_steps=3 format=3 uid="uid://4vgdtsf62fkw"]
 
 [ext_resource type="PackedScene" uid="uid://166ul8to8vkx" path="res://Scenes/UI/Graves/AUIGrave.tscn" id="1_srbmt"]
+[ext_resource type="Script" uid="uid://b35hexmeu455j" path="res://Scripts/UI/Graves/UIMassGrave.cs" id="2_d5aj2"]
 
 [node name="UIMassGrave" instance=ExtResource("1_srbmt")]
+script = ExtResource("2_d5aj2")
+CanDropOutline = Color(0.639216, 0.619608, 0.333333, 1)
+HoverOutline = Color(1, 1, 1, 1)

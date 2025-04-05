@@ -59,8 +59,8 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
 
     public void RenderHighlight()
     {
-        ShaderMaterial.Set("showOutline", Highlight != HighlightMode.None);
-        ShaderMaterial.Set("outlineColor", (Highlight & HighlightMode.Hover) != HighlightMode.None ? HoverOutline : CanDropOutline);
+        ShaderMaterial.SetShaderParameter("showOutline", Highlight != HighlightMode.None);
+        ShaderMaterial.SetShaderParameter("outlineColor", (Highlight & HighlightMode.Hover) != HighlightMode.None ? HoverOutline : CanDropOutline);
     }
 
     private void RenderFilled(Coffin coffin, int score)
@@ -74,12 +74,14 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         if (Grave.CanFill(cursor.HeldCoffin))
         {
             Highlight |= HighlightMode.CanDrop;
+            RenderHighlight();
         }
     }
 
     private void CursorDroppedCoffin(UICursor cursor, Coffin coffin)
     {
         Highlight = HighlightMode.None;
+        RenderHighlight();
     }
 
     private void OnMouseEntered()
