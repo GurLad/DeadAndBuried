@@ -19,7 +19,8 @@ public partial class LevelGenerator : Node
                     newGrave.Data.PersonData = saveData.Graves.SafeGet(index.Serializable())?.PersonData;
                     newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index.Serializable())?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];
-                    index.GetNeighbors().ForEach(a =>
+                    newGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[GraveType.Single];
+                    index.GetNeighbors(true).ForEach(a =>
                     {
                         SingleGrave neighbor = singleGraves.SafeGet(a);
                         if (neighbor != null)
@@ -34,6 +35,7 @@ public partial class LevelGenerator : Node
                         UndergroundGrave undergroundGrave = new UndergroundGrave();
                         undergroundGrave.Data.FilledIconID = GraveIconLoader.GetRandom(a => a.Type == (GraveType.Underground | GraveType.Filled)).IconID;
                         undergroundGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Underground];
+                        undergroundGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[GraveType.Underground];
                         undergroundGrave.OvergroundGrave = newGrave;
                         result.Add(undergroundGrave);
                     }
@@ -46,6 +48,7 @@ public partial class LevelGenerator : Node
             MassGrave massGrave = new MassGrave();
             massGrave.Data.FilledIconID = GraveIconLoader.GetRandom(a => a.Type == (i | GraveType.Filled)).IconID;
             massGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[i];
+            massGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[i];
             massGrave.SetType(i);
             result.Add(massGrave);
         }

@@ -6,6 +6,14 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
 {
     private static readonly Vector2I SingleGravesGridSize = new Vector2I(10, 5);
     private static readonly List<Vector2I> SingleGravesBlacklist = new List<Vector2I>();
+    private static Dictionary<GraveType, int> GraveScoreMultipliers { get; } = new Dictionary<GraveType, int>()
+    {
+        { GraveType.Single, 1000 },
+        { GraveType.Underground, 500 },
+        { GraveType.Mass, 10 },
+        { GraveType.Burn, 20 },
+        { GraveType.Spaceship, 50 },
+    };
 
     protected static List<LevelGeneratorData> Levels { get; } = new List<LevelGeneratorData>()
     {
@@ -21,6 +29,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             massCoffinData: new PersonData(),
             singleGravesGridSize: SingleGravesGridSize,
             singleGravesBlacklist: SingleGravesBlacklist,
+            graveScoreMultipliers: GraveScoreMultipliers,
             graveCompatibleTypes: new Dictionary<GraveType, CoffinType>()
             {
                 { GraveType.Single, CoffinType.Single }
@@ -46,6 +55,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             massCoffinData: new PersonData(),
             singleGravesGridSize: SingleGravesGridSize,
             singleGravesBlacklist: SingleGravesBlacklist,
+            graveScoreMultipliers: GraveScoreMultipliers,
             graveCompatibleTypes: new Dictionary<GraveType, CoffinType>()
             {
                 { GraveType.Single, CoffinType.Single }

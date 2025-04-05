@@ -22,11 +22,17 @@ public class LevelGeneratorData
         { GraveType.Underground, CoffinType.All },
         { GraveType.Mass, CoffinType.All },
     };
+    public Dictionary<GraveType, int> GraveScoreMultipliers { get; init; } = new Dictionary<GraveType, int>()
+    {
+        { GraveType.Single, 1 },
+        { GraveType.Underground, 1 },
+        { GraveType.Mass, 1 },
+    };
     // Events
     public string AssistantType { get; init; } = "1";
     public List<string> Events { get; init; } = new List<string>();
 
-    public LevelGeneratorData(int copyNewFamilyCoffinCount, int copyOldFamilyCoffinCount, List<PersonData> hardcodedCoffins, Vector2I singleGravesGridSize, List<Vector2I> singleGravesBlacklist, Dictionary<GraveType, CoffinType> graveCompatibleTypes, List<string> events, string assistantType, int id, int normalCoffinCount, int zombieCoffinCount, int massCoffinCount, PersonData massCoffinData)
+    public LevelGeneratorData(int copyNewFamilyCoffinCount, int copyOldFamilyCoffinCount, List<PersonData> hardcodedCoffins, Vector2I singleGravesGridSize, List<Vector2I> singleGravesBlacklist, Dictionary<GraveType, CoffinType> graveCompatibleTypes, List<string> events, string assistantType, int id, int normalCoffinCount, int zombieCoffinCount, int massCoffinCount, PersonData massCoffinData, Dictionary<GraveType, int> graveScoreMultipliers)
     {
         CopyNewFamilyCoffinCount = copyNewFamilyCoffinCount;
         CopyOldFamilyCoffinCount = copyOldFamilyCoffinCount;
@@ -41,5 +47,6 @@ public class LevelGeneratorData
         ZombieCoffinCount = zombieCoffinCount;
         MassCoffinCount = massCoffinCount;
         MassCoffinData = massCoffinData;
+        GraveScoreMultipliers = graveScoreMultipliers;
     }
 }

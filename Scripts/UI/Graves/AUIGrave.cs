@@ -1,7 +1,9 @@
 using Godot;
 using System;
 
-public abstract partial class AUIGrave<GraveClass> : Control where GraveClass : AGrave
+public abstract partial class AUIGrave : Control {}
+
+public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveClass : AGrave
 {
     private enum HighlightMode
     {
@@ -73,6 +75,14 @@ public abstract partial class AUIGrave<GraveClass> : Control where GraveClass : 
     {
         Highlight &= ~HighlightMode.Hover;
         RenderHighlight();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        UICursor.Current.OnPickedUpCoffin -= CursorPickedUpCoffin;
+        UICursor.Current.OnDroppedCoffin -= CursorDroppedCoffin;
+        UICursor.Current.OnCancelledCoffin -= CursorDroppedCoffin;
     }
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)

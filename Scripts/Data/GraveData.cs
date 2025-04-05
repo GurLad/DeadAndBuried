@@ -18,7 +18,7 @@ public class GraveData
     public int FilledIconID { get; set; }
     public bool IsEmpty => PersonData == null;
     public CoffinType CompatibleTypes { get; set; } = CoffinType.All;
-    public int ScoreMultiplier;
+    public int ScoreMultiplier { get; set; } = 1;
 
     public bool IsCompatible(CoffinData coffinData)
     {
