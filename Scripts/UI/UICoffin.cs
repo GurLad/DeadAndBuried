@@ -11,6 +11,7 @@ public partial class UICoffin : Control
     }
 
     [Export] private bool CanDrag { get; set; } = true;
+    [Export] private Sprite2D Icon;
     [ExportCategory("Highlight")]
     [Export] private float HeldOpacity { get; set; } = 0.6f;
 
@@ -43,7 +44,7 @@ public partial class UICoffin : Control
 
     public void Render(Coffin coffin)
     {
-        // TBA....
+        Icon.Texture = CoffinIconLoader.IconIDToTexture(Coffin.Data.Types, CoffinIconLoader.GetRandom(a => a.Type == Coffin.Data.Types).IconID);
         RenderHighlight();
     }
 

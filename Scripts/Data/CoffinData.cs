@@ -6,8 +6,9 @@ public enum CoffinType
     None = 0,
     Single = 1,
     Multi = 2,
-    Zombie = 64,
-    All = Single | Multi | Zombie
+    Zombie = 4,
+    All = Single | Multi | Zombie,
+    EndMarker = All + 1,
 }
 
 public class CoffinData
