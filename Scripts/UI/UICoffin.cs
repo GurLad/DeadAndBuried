@@ -11,7 +11,7 @@ public partial class UICoffin : Control
     }
 
     [Export] private bool CanDrag { get; set; } = true;
-    [Export] private Sprite2D Icon;
+    [Export] private TextureRect Icon;
     [ExportCategory("Highlight")]
     [Export] private float HeldOpacity { get; set; } = 0.6f;
 

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public abstract partial class AGameLoader<ThisType, LoadedType> : Node2D where ThisType : AGameLoader<ThisType, LoadedType>
+public abstract partial class AGameLoader<ThisType, LoadedType> : Node where ThisType : AGameLoader<ThisType, LoadedType>
 {
     protected static ThisType Instance { get; set; }
 

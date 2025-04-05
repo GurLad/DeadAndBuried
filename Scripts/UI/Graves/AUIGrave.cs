@@ -12,7 +12,7 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         Hover = 2
     }
 
-    [Export] private Sprite2D Icon;
+    [Export] private TextureRect Icon;
 
     public GraveClass Grave { get; private set; }
 

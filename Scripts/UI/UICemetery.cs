@@ -3,7 +3,7 @@ using System;
 
 public partial class UICemetery : Control
 {
-    [Export] private Sprite2D Background;
+    [Export] private TextureRect Background;
     [Export] private Control GravesHolder;
     
     public void Init(CemeteryData data)
