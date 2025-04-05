@@ -18,7 +18,7 @@ public partial class SingleGrave : AGrave
     public override int FillAndScore(Coffin coffin)
     {
         Data.PersonData = coffin.Data.PersonData;
-        List<SingleGrave> matchingAdjacent = AdjacentGraves.FindAll(a => a.Data.PersonData.FamilyName == Data.PersonData.FamilyName);
+        List<SingleGrave> matchingAdjacent = AdjacentGraves.FindAll(a => a.Data.PersonData?.FamilyName == Data.PersonData.FamilyName);
         if (matchingAdjacent.Count > 0)
         {
             matchingAdjacent.ForEach(a => a.EmitSignal(SignalName.OnMatched, a));

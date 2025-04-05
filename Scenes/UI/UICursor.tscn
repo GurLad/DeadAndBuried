@@ -12,14 +12,23 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_1n7rt")
-Renderer = NodePath("UICoffin")
+Renderer = NodePath("CenterContainer/Control/UICoffin")
 
-[node name="UICoffin" parent="." instance=ExtResource("2_ov8hg")]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UICoffin" parent="CenterContainer/Control" instance=ExtResource("2_ov8hg")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+mouse_filter = 2
 CanDrag = false
+
+[node name="Icon" parent="CenterContainer/Control/UICoffin" index="0"]
+mouse_filter = 2
+
+[editable path="CenterContainer/Control/UICoffin"]

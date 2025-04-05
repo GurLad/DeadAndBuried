@@ -18,14 +18,17 @@ public class CoffinData
 
     private CoffinType _types = CoffinType.Single;
     public CoffinType Types => _types | (PersonData.IsZombie ? CoffinType.Zombie : CoffinType.None);
+    public int IconID = -1;
 
     public CoffinData(PersonData personData, CoffinType types)
     {
         PersonData = personData;
         _types = types;
+        IconID = CoffinIconLoader.GetRandom(a => a.Type == Types).IconID;
     }
 
     public CoffinData()
     {
+        IconID = CoffinIconLoader.GetRandom(a => a.Type == Types).IconID;
     }
 }

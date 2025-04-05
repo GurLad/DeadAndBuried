@@ -44,14 +44,14 @@ public partial class UICoffin : Control
 
     public void Render(Coffin coffin)
     {
-        int iconID = CoffinIconLoader.GetRandom(a => a.Type == Coffin.Data.Types).IconID;
+        int iconID = coffin.Data.IconID;
         if (iconID >= 0)
         {
-            Icon.Texture = CoffinIconLoader.IconIDToTexture(Coffin.Data.Types, iconID);
+            Icon.Texture = CoffinIconLoader.IconIDToTexture(coffin.Data.Types, iconID);
         }
         else
         {
-            GD.PushError("[AUIGrave]: No icon for " + Coffin.Data.Types + "!");
+            GD.PushError("[AUIGrave]: No icon for " + coffin.Data.Types + "!");
         }
         RenderHighlight();
     }

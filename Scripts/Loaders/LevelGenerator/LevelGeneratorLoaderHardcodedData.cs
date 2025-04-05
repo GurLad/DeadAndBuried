@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, LevelGeneratorData>
 {
-    private static readonly Vector2I SingleGravesGridSize = new Vector2I(10, 5);
+    private static readonly Vector2I SingleGravesGridSize = new Vector2I(10, 4);
     private static readonly List<Vector2I> SingleGravesBlacklist = new List<Vector2I>();
     private static Dictionary<GraveType, int> GraveScoreMultipliers { get; } = new Dictionary<GraveType, int>()
     {

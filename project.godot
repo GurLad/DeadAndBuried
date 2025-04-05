@@ -23,6 +23,15 @@ GraveIconLoader="*res://Scenes/Loaders/GraveIconLoader.tscn"
 LevelGeneratorLoader="*res://Scenes/Loaders/LevelGeneratorLoader.tscn"
 PersonLoader="*res://Scenes/Loaders/PersonLoader.tscn"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1380
+window/size/window_height_override=740
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
 [dotnet]
 
 project/assembly_name="DeadAndBuried"

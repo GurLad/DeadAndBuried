@@ -36,7 +36,7 @@ public partial class UICursor : Control
 
     public void PickUpCoffin(UICoffin coffinHolder, Coffin coffin)
     {
-        if (HeldCoffin != null || coffinHolder != null)
+        if (HeldCoffin != null || CoffinHolder != null)
         {
             GD.PushError("[UICursor] : Already holding a coffin! Curr: " + HeldCoffin + ", new: " + coffin);
             return;
@@ -65,7 +65,7 @@ public partial class UICursor : Control
 
     public void CancelPickUp()
     {
-        if (HeldCoffin != null)
+        if (HeldCoffin == null || CoffinHolder == null)
         {
             GD.PushError("[UICursor] : Canceling no coffin!");
             return;
