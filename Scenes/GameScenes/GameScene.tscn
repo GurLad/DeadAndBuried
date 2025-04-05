@@ -8,14 +8,6 @@
 
 [node name="GameScene" type="Node"]
 
-[node name="Level" type="Node" parent="." node_paths=PackedStringArray("Generator", "uiLevel")]
-script = ExtResource("1_0pjut")
-Generator = NodePath("LevelGenerator")
-uiLevel = NodePath("../UI/UILevel")
-
-[node name="LevelGenerator" type="Node" parent="Level"]
-script = ExtResource("2_bh5u1")
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -32,3 +24,11 @@ layout_mode = 1
 
 [node name="UICursor" parent="UI" instance=ExtResource("5_pk66b")]
 layout_mode = 1
+
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("Generator", "uiLevel")]
+script = ExtResource("1_0pjut")
+Generator = NodePath("LevelGenerator")
+uiLevel = NodePath("../UI/UILevel")
+
+[node name="LevelGenerator" type="Node" parent="Level"]
+script = ExtResource("2_bh5u1")

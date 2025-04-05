@@ -50,7 +50,38 @@ public partial class UILevel : Control
         CemeteryHolder.AddChild(cemetery);
         graves.ForEach(a =>
         {
-            cemetery.AddChild(a);
+            AUIGrave uiGrave;
+            switch (type)
+            {
+                case GraveType.Single:
+                    uiGrave = CreateAndInitUIGrave<SingleGrave, UISingleGrave>(a is SingleGrave s ? s : null);
+                    break;
+                case GraveType.Underground:
+                    uiGrave = CreateAndInitUIGrave<UndergroundGrave, UIUndergroundGrave>(a is UndergroundGrave u ? u : null);
+                    break;
+                default:
+                    uiGrave = CreateAndInitUIGrave<MassGrave, UIMassGrave>(a is MassGrave m ? m : null);
+                    break;
+            }
+            cemetery.AddGrave(uiGrave);
         });
+    }
+
+    private UIGraveClass CreateAndInitUIGrave<GraveClass, UIGraveClass>(GraveClass grave) where GraveClass : AGrave where UIGraveClass : AUIGraveTyped<GraveClass>
+    {
+        if (grave == null)
+        {
+            GD.PushError("[UILevel]: Messed up grave!");
+            GetTree().Quit();
+            return null;
+        }
+        UIGraveClass uiGrave = (grave.Type switch
+        {
+            GraveType.Single => SceneUISingleGrave,
+            GraveType.Underground => SceneUIUndergroundGrave,
+            _ => SceneUIMassGrave,
+        }).Instantiate<UIGraveClass>();
+        uiGrave.Init(grave);
+        return uiGrave;
     }
 }

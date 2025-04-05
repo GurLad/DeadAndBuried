@@ -6,11 +6,16 @@
 script = ExtResource("1_scic0")
 
 [node name="Single" type="Sprite2D" parent="."]
+visible = false
 
 [node name="Underground" type="Sprite2D" parent="."]
+visible = false
 
 [node name="Mass" type="Sprite2D" parent="."]
+visible = false
 
 [node name="Burn" type="Sprite2D" parent="."]
+visible = false
 
 [node name="Spaceship" type="Sprite2D" parent="."]
+visible = false
