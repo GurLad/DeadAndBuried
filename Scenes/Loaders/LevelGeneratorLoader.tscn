@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brhc0ndovkipu"]
+
+[ext_resource type="Script" uid="uid://ddpl7id57vdmd" path="res://Scripts/Loaders/LevelGenerator/LevelGeneratorLoaderHardcodedData.cs" id="1_jk8p5"]
+
+[node name="LevelGeneratorLoader" type="Node"]
+script = ExtResource("1_jk8p5")

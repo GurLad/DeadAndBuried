@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Flags]
 public enum CoffinType
 {
     None = 0,

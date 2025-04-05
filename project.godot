@@ -14,6 +14,14 @@ config/name="DeadAndBuried"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CemeteryLoader="*res://Scenes/Loaders/CemeteryLoader.tscn"
+CoffinIconLoader="*res://Scenes/Loaders/CoffinIconLoader.tscn"
+GraveIconLoader="*res://Scenes/Loaders/GraveIconLoader.tscn"
+LevelGeneratorLoader="*res://Scenes/Loaders/LevelGeneratorLoader.tscn"
+PersonLoader="*res://Scenes/Loaders/PersonLoader.tscn"
+
 [dotnet]
 
 project/assembly_name="DeadAndBuried"
@@ -21,7 +29,9 @@ project/assembly_name="DeadAndBuried"
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "red",
+"res://Scenes/": "purple",
+"res://Scenes/Loaders/": "pink",
+"res://Scenes/UI/": "red",
 "res://Scripts/": "orange",
 "res://Scripts/Data/": "yellow",
 "res://Scripts/GodotUtils/": "green",

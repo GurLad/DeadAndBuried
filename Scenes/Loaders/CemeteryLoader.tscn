@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp3woomf4e6qe"]
+
+[ext_resource type="Script" uid="uid://df7ulfvumk6kh" path="res://Scripts/Loaders/Cemetery/CemeteryLoader.cs" id="1_scic0"]
+
+[node name="CemeteryLoader" type="Node"]
+script = ExtResource("1_scic0")
+
+[node name="Single" type="Sprite2D" parent="."]
+
+[node name="Underground" type="Sprite2D" parent="."]
+
+[node name="Mass" type="Sprite2D" parent="."]
+
+[node name="Burn" type="Sprite2D" parent="."]
+
+[node name="Spaceship" type="Sprite2D" parent="."]

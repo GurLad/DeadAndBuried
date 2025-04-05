@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://stgvad1yco08"]
+
+[ext_resource type="Script" uid="uid://dlkc1db5e3qlm" path="res://Scripts/Loaders/GraveIcons/GraveIconLoader.cs" id="1_021i6"]
+[ext_resource type="Texture2D" uid="uid://bor8bk2xnagpw" path="res://Sprites/Tombs/TombEmpty.png" id="2_cp0x7"]
+[ext_resource type="Script" uid="uid://ctlqma7uu0qve" path="res://Scripts/Loaders/GraveIcons/GraveIconLoaderNode.cs" id="3_5jjtp"]
+[ext_resource type="Texture2D" uid="uid://5o7iqpjkce18" path="res://Sprites/Tombs/TombFull1.png" id="4_466qj"]
+[ext_resource type="Texture2D" uid="uid://cjjcnjl35ipny" path="res://Sprites/Tombs/TombFull2.png" id="5_4ayga"]
+[ext_resource type="Texture2D" uid="uid://spq4rs5oems" path="res://Sprites/Tombs/TombFull3.png" id="6_dbsij"]
+[ext_resource type="Texture2D" uid="uid://b0dbyugd0tj8u" path="res://Sprites/Tombs/TombFull4.png" id="7_67d8m"]
+[ext_resource type="Texture2D" uid="uid://bipkj5t2m2jo1" path="res://Sprites/Tombs/TombFull5.png" id="8_5gssd"]
+
+[node name="GraveIconLoader" type="Node"]
+script = ExtResource("1_021i6")
+
+[node name="TombEmpty" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_cp0x7")
+script = ExtResource("3_5jjtp")
+_graveType = 1
+
+[node name="TombFull1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_466qj")
+script = ExtResource("3_5jjtp")
+_graveType = 1
+Filled = true
+
+[node name="TombFull2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_4ayga")
+script = ExtResource("3_5jjtp")
+_graveType = 1
+Filled = true
+
+[node name="TombFull3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_dbsij")
+script = ExtResource("3_5jjtp")
+_graveType = 1
+Filled = true
+
+[node name="TombFull4" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_67d8m")
+script = ExtResource("3_5jjtp")
+_graveType = 1
+Filled = true
+
+[node name="TombFull5" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_5gssd")
+script = ExtResource("3_5jjtp")
+_graveType = 1
+Filled = true
