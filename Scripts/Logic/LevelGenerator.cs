@@ -45,12 +45,15 @@ public partial class LevelGenerator : Node
         }
         for (GraveType i = GraveType.Mass; i < GraveType.EndMarker; i++)
         {
-            MassGrave massGrave = new MassGrave();
-            massGrave.Data.FilledIconID = GraveIconLoader.GetRandom(a => a.Type == (i | GraveType.Filled)).IconID;
-            massGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[i];
-            massGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[i];
-            massGrave.SetType(i);
-            result.Add(massGrave);
+            if (level.GraveCompatibleTypes.ContainsKey(i))
+            {
+                MassGrave massGrave = new MassGrave();
+                massGrave.Data.FilledIconID = GraveIconLoader.GetRandom(a => a.Type == (i | GraveType.Filled)).IconID;
+                massGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[i];
+                massGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[i];
+                massGrave.SetType(i);
+                result.Add(massGrave);
+            }
         }
         return result;
     }

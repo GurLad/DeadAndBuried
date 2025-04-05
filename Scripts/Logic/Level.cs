@@ -7,6 +7,7 @@ public partial class Level : Node
     private static SaveData SaveData { get; } = new SaveData();
 
     [Export] private LevelGenerator Generator;
+    [Export] private UILevel uiLevel;
 
     private List<AGrave> Graves;
     private List<Coffin> Coffins;
@@ -17,6 +18,6 @@ public partial class Level : Node
         LevelGeneratorData level = LevelGeneratorLoader.GetRandom(a => a.ID == SaveData.CurrentLevel);
         Coffins = Generator.GenerateCoffins(level);
         Graves = Generator.GenerateGraves(level, SaveData);
-        
+        uiLevel.Init(Graves, Coffins);
     }
 }

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://6niblvdcgmys"]
+
+[ext_resource type="Script" uid="uid://cg56jbac0dqob" path="res://Scripts/GodotUtils/SceneController.cs" id="1_xofhr"]
+[ext_resource type="PackedScene" uid="uid://cjrfk3c8pc4o8" path="res://Scenes/GameScenes/GameScene.tscn" id="2_2khot"]
+[ext_resource type="Script" uid="uid://dyne444lbhu14" path="res://Scripts/GodotUtils/Transitions/FadeTransition.cs" id="2_ulkda"]
+
+[node name="Main" type="Node"]
+
+[node name="SceneController" type="Node" parent="." node_paths=PackedStringArray("scenesNode")]
+script = ExtResource("1_xofhr")
+firstScene = "Game"
+scenes = Dictionary[String, PackedScene]({
+"Game": ExtResource("2_2khot")
+})
+pathTransition = NodePath("../FadeTransition")
+scenesNode = NodePath(".")
+
+[node name="FadeTransition" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_ulkda")
+transitionTime = 1.0

@@ -29,12 +29,25 @@ public partial class CoffinIconLoader : AGameLoader<CoffinIconLoader, (CoffinTyp
         {
             if (predicate((i, 0)))
             {
-                return Icons.SafeGet(i).ConvertAll((a, j) => (i, j));
+                return (Icons.SafeGet(i) ?? new List<Texture2D>()).ConvertAll((a, j) => (i, j));
             }
         }
         GD.PushError("[GraveIconLoader]: Bad type!");
         GetTree().Quit();
         return null;
+    }
+
+    protected override (CoffinType Type, int IconID) GetRandomInternal(Func<(CoffinType Type, int IconID), bool> predicate)
+    {
+        List<(CoffinType Type, int IconID)> options = new List<(CoffinType Type, int IconID)>();
+        if (options.Count > 0)
+        {
+            return base.GetRandomInternal(predicate);
+        }
+        else
+        {
+            return (CoffinType.None, -1);
+        }
     }
 
     public static Texture2D IconIDToTexture(CoffinType type, int id) => Instance.Icons[type][id];

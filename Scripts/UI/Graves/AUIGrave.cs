@@ -34,7 +34,15 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
     private void Render(GraveClass grave)
     {
         GraveType type = grave.Data.IsEmpty ? grave.Type : (grave.Type | GraveType.Filled);
-        Icon.Texture = GraveIconLoader.IconIDToTexture(type, grave.Data.IsEmpty ? GraveIconLoader.GetRandom(a => a.Type == type).IconID : grave.Data.FilledIconID);
+        int iconID = grave.Data.IsEmpty ? GraveIconLoader.GetRandom(a => a.Type == type).IconID : grave.Data.FilledIconID;
+        if (iconID >= 0)
+        {
+            Icon.Texture = GraveIconLoader.IconIDToTexture(type, iconID);
+        }
+        else
+        {
+            GD.PushError("[AUIGrave]: No icon for " + type + "!");
+        }
         RenderHighlight();
     }
 

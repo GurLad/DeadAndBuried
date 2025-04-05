@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjrfk3c8pc4o8"]
+
+[ext_resource type="Script" uid="uid://cdsawhepmu6s7" path="res://Scripts/Logic/Level.cs" id="1_0pjut"]
+[ext_resource type="Script" uid="uid://ddo034v27hm4i" path="res://Scripts/Logic/LevelGenerator.cs" id="2_bh5u1"]
+[ext_resource type="PackedScene" uid="uid://bvjdvea1flrb3" path="res://Scenes/UI/UIBackdrop.tscn" id="3_dvlcm"]
+[ext_resource type="PackedScene" uid="uid://br3s8f8txxth4" path="res://Scenes/UI/UILevel.tscn" id="4_yxnbd"]
+[ext_resource type="PackedScene" uid="uid://ce2yqtl8w6ooc" path="res://Scenes/UI/UICursor.tscn" id="5_pk66b"]
+
+[node name="GameScene" type="Node"]
+
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("Generator", "uiLevel")]
+script = ExtResource("1_0pjut")
+Generator = NodePath("LevelGenerator")
+uiLevel = NodePath("../UI/UILevel")
+
+[node name="LevelGenerator" type="Node" parent="Level"]
+script = ExtResource("2_bh5u1")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIBackdrop" parent="UI" instance=ExtResource("3_dvlcm")]
+layout_mode = 1
+
+[node name="UILevel" parent="UI" instance=ExtResource("4_yxnbd")]
+layout_mode = 1
+
+[node name="UICursor" parent="UI" instance=ExtResource("5_pk66b")]
+layout_mode = 1

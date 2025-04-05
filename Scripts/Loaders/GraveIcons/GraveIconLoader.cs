@@ -29,12 +29,29 @@ public partial class GraveIconLoader : AGameLoader<GraveIconLoader, (GraveType T
         {
             if (predicate((i, 0)))
             {
-                return Icons.SafeGet(i).ConvertAll((a, j) => (i, j));
+                return Icons.SafeGet(i)?.ConvertAll((a, j) => (i, j)) ?? new List<(GraveType i, int j)>();
+            }
+            if (predicate((i | GraveType.Filled, 0)))
+            {
+                return Icons.SafeGet(i | GraveType.Filled)?.ConvertAll((a, j) => (i | GraveType.Filled, j)) ?? new List<(GraveType i, int j)>();
             }
         }
         GD.PushError("[GraveIconLoader]: Bad type!");
         GetTree().Quit();
         return null;
+    }
+
+    protected override (GraveType Type, int IconID) GetRandomInternal(Func<(GraveType Type, int IconID), bool> predicate)
+    {
+        List<(GraveType Type, int IconID)> options = new List<(GraveType Type, int IconID)>();
+        if (options.Count > 0)
+        {
+            return base.GetRandomInternal(predicate);
+        }
+        else
+        {
+            return (GraveType.None, -1);
+        }
     }
 
     public static Texture2D IconIDToTexture(GraveType type, int id) => Instance.Icons[type][id];

@@ -3,6 +3,7 @@ using System;
 
 public enum GraveType
 {
+    None = 0,
     Single = 1,
     Underground = 2,
     Mass = 3,
