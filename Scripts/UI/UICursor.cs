@@ -45,7 +45,7 @@ public partial class UICursor : Control
         CoffinHolder = coffinHolder;
         Renderer.Render(coffin);
         Renderer.Visible = true;
-        EmitSignal(SignalName.OnPickedUpCoffin, coffin);
+        EmitSignal(SignalName.OnPickedUpCoffin, this, coffin);
     }
 
     public void DropCoffin(Coffin coffin, AGrave grave)
@@ -58,7 +58,7 @@ public partial class UICursor : Control
         grave.Fill(coffin);
         CoffinHolder.Remove();
         Renderer.Visible = false;
-        EmitSignal(SignalName.OnDroppedCoffin, coffin);
+        EmitSignal(SignalName.OnDroppedCoffin, this, coffin);
         HeldCoffin = null;
         CoffinHolder = null;
     }
@@ -72,7 +72,7 @@ public partial class UICursor : Control
         }
         CoffinHolder.CancelDrop();
         Renderer.Visible = false;
-        EmitSignal(SignalName.OnCancelledCoffin, HeldCoffin);
+        EmitSignal(SignalName.OnCancelledCoffin, this, HeldCoffin);
         HeldCoffin = null;
         CoffinHolder = null;
     }
