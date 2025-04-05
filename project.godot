@@ -53,5 +53,6 @@ folder_colors={
 "res://Sprites/": "red",
 "res://Sprites/Backgrounds/": "orange",
 "res://Sprites/Coffins/": "yellow",
-"res://Sprites/Tombs/": "green"
+"res://Sprites/Dialogue/": "green",
+"res://Sprites/Tombs/": "teal"
 }

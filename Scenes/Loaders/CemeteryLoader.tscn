@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp3woomf4e6qe"]
+[gd_scene load_steps=3 format=3 uid="uid://bp3woomf4e6qe"]
 
 [ext_resource type="Script" uid="uid://df7ulfvumk6kh" path="res://Scripts/Loaders/Cemetery/CemeteryLoader.cs" id="1_scic0"]
+[ext_resource type="Texture2D" uid="uid://cjw01wrv31112" path="res://Sprites/Backgrounds/Overground2.png" id="2_vdkad"]
 
 [node name="CemeteryLoader" type="Node"]
 script = ExtResource("1_scic0")
 
 [node name="Single" type="Sprite2D" parent="."]
 visible = false
+texture = ExtResource("2_vdkad")
 
 [node name="Underground" type="Sprite2D" parent="."]
 visible = false

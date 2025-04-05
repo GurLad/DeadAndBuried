@@ -9,27 +9,32 @@ public partial class CemeteryLoader : AGameLoader<CemeteryLoader, CemeteryData>
         new CemeteryData
         (
             type: GraveType.Single,
-            location: Vector2I.Zero
+            location: Vector2I.Zero,
+            yPositionMod: 34
         ),
         new CemeteryData
         (
             type: GraveType.Underground,
-            location: Vector2I.Down
+            location: Vector2I.Down,
+            yPositionMod: 0
         ),
         new CemeteryData
         (
             type: GraveType.Mass,
-            location: Vector2I.Right
+            location: Vector2I.Right,
+            yPositionMod: 0
         ),
         new CemeteryData
         (
             type: GraveType.Burn,
-            location: Vector2I.Right
+            location: Vector2I.Right,
+            yPositionMod: 0
         ),
         new CemeteryData
         (
             type: GraveType.Spaceship,
-            location: Vector2I.Right
+            location: Vector2I.Right,
+            yPositionMod: 0
         ),
     };
 }
