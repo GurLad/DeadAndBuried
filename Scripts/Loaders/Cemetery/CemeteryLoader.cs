@@ -23,6 +23,7 @@ public partial class CemeteryLoader : AGameLoader<CemeteryLoader, CemeteryData>
                 if (data != null)
                 {
                     data.Background = sprite.Texture;
+                    GD.Print("[CemeteryLoader]: Loaded " + data.Type);
                 }
                 else
                 {

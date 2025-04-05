@@ -15,10 +15,11 @@ public partial class GraveIconLoader : AGameLoader<GraveIconLoader, (GraveType T
             {
                 Icons.AddOrSet(node.GraveType, (Icons.SafeGet(node.GraveType) ?? new List<Texture2D>()));
                 Icons[node.GraveType].Add(node.Texture);
+                GD.Print("[GraveIconLoader]: Loaded " + node.GraveType);
             }
             else
             {
-                GD.PrintErr("[BodyLoader]: Invalid loader node!");
+                GD.PrintErr("[GraveIconLoader]: Invalid loader node!");
             }
         }
     }
@@ -43,7 +44,7 @@ public partial class GraveIconLoader : AGameLoader<GraveIconLoader, (GraveType T
 
     protected override (GraveType Type, int IconID) GetRandomInternal(Func<(GraveType Type, int IconID), bool> predicate)
     {
-        List<(GraveType Type, int IconID)> options = new List<(GraveType Type, int IconID)>();
+        List<(GraveType Type, int IconID)> options = GetAllInternal(predicate);
         if (options.Count > 0)
         {
             return base.GetRandomInternal(predicate);

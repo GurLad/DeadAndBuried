@@ -15,10 +15,11 @@ public partial class CoffinIconLoader : AGameLoader<CoffinIconLoader, (CoffinTyp
             {
                 Icons.AddOrSet(node.CoffinType, (Icons.SafeGet(node.CoffinType) ?? new List<Texture2D>()));
                 Icons[node.CoffinType].Add(node.Texture);
+                GD.Print("[CoffinIconLoader]: Loaded " + node.CoffinType);
             }
             else
             {
-                GD.PrintErr("[BodyLoader]: Invalid loader node!");
+                GD.PrintErr("[CoffinIconLoader]: Invalid loader node!");
             }
         }
     }
@@ -32,14 +33,14 @@ public partial class CoffinIconLoader : AGameLoader<CoffinIconLoader, (CoffinTyp
                 return (Icons.SafeGet(i) ?? new List<Texture2D>()).ConvertAll((a, j) => (i, j));
             }
         }
-        GD.PushError("[GraveIconLoader]: Bad type!");
+        GD.PushError("[CoffinIconLoader]: Bad type!");
         GetTree().Quit();
         return null;
     }
 
     protected override (CoffinType Type, int IconID) GetRandomInternal(Func<(CoffinType Type, int IconID), bool> predicate)
     {
-        List<(CoffinType Type, int IconID)> options = new List<(CoffinType Type, int IconID)>();
+        List<(CoffinType Type, int IconID)> options = GetAllInternal(predicate);
         if (options.Count > 0)
         {
             return base.GetRandomInternal(predicate);

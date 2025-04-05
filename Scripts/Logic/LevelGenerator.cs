@@ -61,7 +61,7 @@ public partial class LevelGenerator : Node
     public List<Coffin> GenerateCoffins(LevelGeneratorData level)
     {
         List<PersonData> people = GeneratePeople(level);
-        List<CoffinData> coffinDatas = people.ConvertAll(a => new CoffinData(a, a.IsZombie ? CoffinType.Single : CoffinType.Zombie));
+        List<CoffinData> coffinDatas = people.ConvertAll(a => new CoffinData(a, CoffinType.Single | (a.IsZombie ? CoffinType.Zombie : CoffinType.None)));
         for (int i = 0; i < level.MassCoffinCount; i++)
         {
             coffinDatas.Add(new CoffinData(level.MassCoffinData, CoffinType.Multi | CoffinType.Zombie));

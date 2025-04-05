@@ -4,16 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://cjrfk3c8pc4o8" path="res://Scenes/GameScenes/GameScene.tscn" id="2_2khot"]
 [ext_resource type="Script" uid="uid://dyne444lbhu14" path="res://Scripts/GodotUtils/Transitions/FadeTransition.cs" id="2_ulkda"]
 
-[node name="Main" type="Node"]
-
-[node name="SceneController" type="Node" parent="." node_paths=PackedStringArray("scenesNode")]
+[node name="Main" type="Node" node_paths=PackedStringArray("scenesNode")]
 script = ExtResource("1_xofhr")
 firstScene = "Game"
 scenes = Dictionary[String, PackedScene]({
 "Game": ExtResource("2_2khot")
 })
-pathTransition = NodePath("../FadeTransition")
-scenesNode = NodePath(".")
+pathTransition = NodePath("FadeTransition")
+scenesNode = NodePath("SceneHolder")
+
+[node name="SceneHolder" type="Node" parent="."]
 
 [node name="FadeTransition" type="ColorRect" parent="."]
 anchors_preset = 15
