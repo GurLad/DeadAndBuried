@@ -4,11 +4,17 @@ using System.Collections.Generic;
 
 public partial class Level : Node
 {
+    private static SaveData SaveData { get; } = new SaveData();
+
+    [Export] private LevelGenerator Generator;
+
     private List<AGrave> Graves;
     private List<Coffin> Coffins;
 
-    public void Generate(LevelGeneratorData level)
+    public override void _Ready()
     {
-        
+        base._Ready();
+        LevelGeneratorData level = LevelGeneratorLoader.GetRandom(a => a.ID == SaveData.CurrentLevel);
+        Coffins = Generator.GenerateCoffins(level);
     }
 }

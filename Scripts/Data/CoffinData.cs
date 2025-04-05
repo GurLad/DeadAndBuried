@@ -16,4 +16,14 @@ public class CoffinData
 
     private CoffinType _types = CoffinType.Single;
     public CoffinType Types => _types | (PersonData.IsZombie ? CoffinType.Zombie : CoffinType.None);
+
+    public CoffinData(PersonData personData, CoffinType types)
+    {
+        PersonData = personData;
+        _types = types;
+    }
+
+    public CoffinData()
+    {
+    }
 }

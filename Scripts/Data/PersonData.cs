@@ -3,9 +3,9 @@ using System;
 
 public class PersonData
 {
-    public string Name { get; init; } = "";
-    public string FamilyName { get; set; } = "";
-    public string Inscription { get; init; } = "";
+    public string Name { get; init; } = "Error";
+    public string FamilyName { get; set; } = "Errorson";
+    public string Inscription { get; init; } = "I AM ERROR.";
     public bool IsZombie { get; init; } = false;
 
     public PersonData(string name, string familyName, string inscription, bool isZombie)

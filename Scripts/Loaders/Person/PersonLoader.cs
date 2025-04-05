@@ -27,7 +27,7 @@ public partial class PersonLoader : AGameLoader<PersonLoader, PersonData>
     private string FormatInscription(string inscription, Pronoun pronoun)
     {
         List<Pronoun> full = new List<Pronoun>();
-        for (int i = 1; i < (int)Pronoun.End; i *= 2)
+        for (int i = 1; i < (int)Pronoun.EndMarker; i *= 2)
         {
             if (((int)pronoun & i) != 0)
             {

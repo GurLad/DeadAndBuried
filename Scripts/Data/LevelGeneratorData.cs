@@ -2,20 +2,44 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class LevelGeneratorData : Node
+public class LevelGeneratorData
 {
+    public int ID { get; init; } = 0;
     // Coffins
-    public int TotalCoffinCount { get; } = 0;
-    public int CopyNewFamilyCoffinCount { get; } = 0; // Each one here copies the family name from another coffing here
-    public int CopyOldFamilyCoffinCount { get; } = 0; // Each one here copies the family name from an old coffin
-    public List<PersonData> HardcodedCoffins = new List<PersonData>();
+    public int NormalCoffinCount { get; init; } = 0;
+    public int ZombieCoffinCount { get; init; } = 0;
+    public int MassCoffinCount { get; init; } = 0;
+    public int CopyNewFamilyCoffinCount { get; init; } = 0; // Each one here copies the family name from another coffing here
+    public int CopyOldFamilyCoffinCount { get; init; } = 0; // Each one here copies the family name from an old coffin
+    public List<PersonData> HardcodedCoffins { get; init; } = new List<PersonData>();
+    public PersonData MassCoffinData { get; init; } = new PersonData();
     // Graves
-    public Vector2ISerializable SingleGravesGridSize { get; } = new Vector2ISerializable(1, 1);
-    public List<Vector2I> SingleGravesBlacklist { get; } = new List<Vector2I>();
-    public Dictionary<GraveType, CoffinType> GraveCompatibleTypes { get; } = new Dictionary<GraveType, CoffinType>()
+    public Vector2I SingleGravesGridSize { get; init; } = Vector2I.One;
+    public List<Vector2I> SingleGravesBlacklist { get; init; } = new List<Vector2I>();
+    public Dictionary<GraveType, CoffinType> GraveCompatibleTypes { get; init; } = new Dictionary<GraveType, CoffinType>()
     {
         { GraveType.Single, CoffinType.All },
         { GraveType.Underground, CoffinType.All },
         { GraveType.Mass, CoffinType.All },
     };
+    // Events
+    public string AssistantType { get; init; } = "1";
+    public List<string> Events { get; init; } = new List<string>();
+
+    public LevelGeneratorData(int copyNewFamilyCoffinCount, int copyOldFamilyCoffinCount, List<PersonData> hardcodedCoffins, Vector2I singleGravesGridSize, List<Vector2I> singleGravesBlacklist, Dictionary<GraveType, CoffinType> graveCompatibleTypes, List<string> events, string assistantType, int id, int normalCoffinCount, int zombieCoffinCount, int massCoffinCount, PersonData massCoffinData)
+    {
+        CopyNewFamilyCoffinCount = copyNewFamilyCoffinCount;
+        CopyOldFamilyCoffinCount = copyOldFamilyCoffinCount;
+        HardcodedCoffins = hardcodedCoffins;
+        SingleGravesGridSize = singleGravesGridSize;
+        SingleGravesBlacklist = singleGravesBlacklist;
+        GraveCompatibleTypes = graveCompatibleTypes;
+        Events = events;
+        AssistantType = assistantType;
+        ID = id;
+        NormalCoffinCount = normalCoffinCount;
+        ZombieCoffinCount = zombieCoffinCount;
+        MassCoffinCount = massCoffinCount;
+        MassCoffinData = massCoffinData;
+    }
 }

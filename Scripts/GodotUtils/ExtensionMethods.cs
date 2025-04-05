@@ -42,6 +42,28 @@ public static class ExtensionMethods
         return lineStart + new Vector2I(Mathf.RoundToInt(ab.X * t), Mathf.RoundToInt(ab.Y * t));
     }
 
+    public static List<Vector2I> GetNeighbors(this Vector2I point, bool includeDiagonal = false)
+    {
+        List<Vector2I> result = new List<Vector2I>()
+        {
+            new Vector2I(point.X - 1, point.Y),
+            new Vector2I(point.X + 1, point.Y),
+            new Vector2I(point.X, point.Y - 1),
+            new Vector2I(point.X, point.Y + 1),
+        };
+        if (includeDiagonal)
+        {
+            result.AddRange(new List<Vector2I>()
+            {
+                new Vector2I(point.X - 1, point.Y - 1),
+                new Vector2I(point.X + 1, point.Y + 1),
+                new Vector2I(point.X - 1, point.Y + 1),
+                new Vector2I(point.X + 1, point.Y - 1),
+            });
+        }
+        return result;
+    }
+
     // Random
 
     public static float NextFloat(this Random random, Vector2 range)
@@ -204,6 +226,16 @@ public static class ExtensionMethods
         {
             action(list[i], i);
         }
+    }
+
+    public static List<S> ConvertAll<T, S>(this List<T> list, Func<T, int, S> predicate)
+    {
+        List<S> result = new List<S>();
+        for (int i = 0; i < list.Count; i++)
+        {
+            result.Add(predicate(list[i], i));
+        }
+        return result;
     }
 
     // Dictionary extensions

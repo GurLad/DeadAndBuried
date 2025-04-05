@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class PersonLoader : AGameLoader<PersonLoader, PersonData>
 {
-    protected enum Pronoun { She = 1, He = 2, They = 4, End = 8 };
+    protected enum Pronoun { She = 1, He = 2, They = 4, EndMarker = 8 };
 
     protected static readonly List<(string Name, Pronoun Pronoun)> PossibleNames = new List<(string Name, Pronoun Pronoun)>()
     {
