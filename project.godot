@@ -51,6 +51,7 @@ folder_colors={
 "res://Scripts/UI/": "purple",
 "res://Shaders/": "pink",
 "res://Sprites/": "red",
-"res://Sprites/Coffins/": "orange",
-"res://Sprites/Tombs/": "yellow"
+"res://Sprites/Backgrounds/": "orange",
+"res://Sprites/Coffins/": "yellow",
+"res://Sprites/Tombs/": "green"
 }
