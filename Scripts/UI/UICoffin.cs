@@ -14,10 +14,12 @@ public partial class UICoffin : Control
     [Export] private TextureRect Icon;
     [ExportCategory("Highlight")]
     [Export] private float HeldOpacity { get; set; } = 0.6f;
+    [Export] private Color HoverOutline { get; set; }
 
     public Coffin Coffin { get; private set; }
 
     private HighlightMode Highlight;
+    private ShaderMaterial ShaderMaterial;
 
     [Signal]
     public delegate void OnRemovedEventHandler(UICursor cursor, Coffin coffin);
@@ -26,9 +28,17 @@ public partial class UICoffin : Control
     {
         Coffin = coffin;
         AddChild(Coffin);
-        Render(Coffin);
         MouseEntered += OnMouseEntered;
         MouseExited += OnMouseExited;
+        Icon.Material = (Material)Icon.Material.Duplicate();
+        ShaderMaterial = Icon.Material is ShaderMaterial sm ? sm : null;
+        if (ShaderMaterial == null)
+        {
+            GD.PushError("[UICoffin]: No shader material!");
+            GetTree().Quit();
+        }
+        ShaderMaterial.Set("outlineColor", HoverOutline);
+        Render(Coffin);
     }
 
     public void Remove()
@@ -63,7 +73,7 @@ public partial class UICoffin : Control
             return;
         }
         Modulate = new Color(Modulate, (Highlight & HighlightMode.Held) != HighlightMode.None ? HeldOpacity : 1);
-        // TBA
+        ShaderMaterial.Set("showOutline", (Highlight & HighlightMode.Hover) != HighlightMode.None);
     }
 
     private void OnMouseEntered()
@@ -90,6 +100,8 @@ public partial class UICoffin : Control
             return this;
         }
         OnMouseExited();
+        Highlight |= HighlightMode.Held;
+        RenderHighlight();
         UICursor.Current.PickUpCoffin(this, Coffin);
         return UICursor.Current;
     }

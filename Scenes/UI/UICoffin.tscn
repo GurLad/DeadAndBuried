@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpq60kah1abt7"]
+[gd_scene load_steps=3 format=3 uid="uid://dpq60kah1abt7"]
 
 [ext_resource type="Script" uid="uid://ryvgvhg38xqt" path="res://Scripts/UI/UICoffin.cs" id="1_vk31p"]
+[ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="2_4e58g"]
 
 [node name="UICoffin" type="MarginContainer" node_paths=PackedStringArray("Icon")]
 anchors_preset = 15
@@ -12,4 +13,5 @@ script = ExtResource("1_vk31p")
 Icon = NodePath("Icon")
 
 [node name="Icon" type="TextureRect" parent="."]
+material = ExtResource("2_4e58g")
 layout_mode = 2

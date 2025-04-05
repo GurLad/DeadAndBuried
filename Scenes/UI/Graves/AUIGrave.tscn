@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://166ul8to8vkx"]
+[gd_scene load_steps=2 format=3 uid="uid://166ul8to8vkx"]
+
+[ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="1_687yp"]
 
 [node name="AUIGrave" type="MarginContainer"]
 anchors_preset = 8
@@ -10,4 +12,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_687yp")
 layout_mode = 2

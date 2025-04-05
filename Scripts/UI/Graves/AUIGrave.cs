@@ -13,22 +13,33 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
     }
 
     [Export] private TextureRect Icon;
+    [ExportCategory("Highlight")]
+    [Export] private Color CanDropOutline { get; set; }
+    [Export] private Color HoverOutline { get; set; }
 
     public GraveClass Grave { get; private set; }
 
     private HighlightMode Highlight;
+    private ShaderMaterial ShaderMaterial;
 
     public virtual void Init(GraveClass grave)
     {
         Grave = grave;
         Grave.OnFilled += (grave, coffin, score) => RenderFilled(coffin, score);
         AddChild(Grave);
-        Render(Grave);
         UICursor.Current.OnPickedUpCoffin += CursorPickedUpCoffin;
         UICursor.Current.OnDroppedCoffin += CursorDroppedCoffin;
         UICursor.Current.OnCancelledCoffin += CursorDroppedCoffin;
         MouseEntered += OnMouseEntered;
         MouseExited += OnMouseExited;
+        Icon.Material = (Material)Icon.Material.Duplicate();
+        ShaderMaterial = Icon.Material is ShaderMaterial sm ? sm : null;
+        if (ShaderMaterial == null)
+        {
+            GD.PushError("[UICoffin]: No shader material!");
+            GetTree().Quit();
+        }
+        Render(Grave);
     }
 
     private void Render(GraveClass grave)
@@ -48,7 +59,8 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
 
     public void RenderHighlight()
     {
-        // TBA
+        ShaderMaterial.Set("showOutline", Highlight != HighlightMode.None);
+        ShaderMaterial.Set("outlineColor", (Highlight & HighlightMode.Hover) != HighlightMode.None ? HoverOutline : CanDropOutline);
     }
 
     private void RenderFilled(Coffin coffin, int score)
