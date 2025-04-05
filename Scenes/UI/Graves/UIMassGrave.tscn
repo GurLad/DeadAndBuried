@@ -1,15 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtit3bo8fx7q8"]
+[gd_scene load_steps=2 format=3 uid="uid://4vgdtsf62fkw"]
 
-[ext_resource type="Script" uid="uid://b35hexmeu455j" path="res://Scripts/UI/Graves/UIMassGrave.cs" id="1_srbmt"]
+[ext_resource type="PackedScene" uid="uid://166ul8to8vkx" path="res://Scenes/UI/Graves/AUIGrave.tscn" id="1_srbmt"]
 
-[node name="UIMassGrave" type="MarginContainer" node_paths=PackedStringArray("Icon")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_srbmt")
-Icon = NodePath("TextureRect")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
+[node name="UIMassGrave" instance=ExtResource("1_srbmt")]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce2yqtl8w6ooc"]
+
+[ext_resource type="Script" uid="uid://bm0swnwunbg3e" path="res://Scripts/UI/UICursor.cs" id="1_1n7rt"]
+[ext_resource type="PackedScene" uid="uid://dpq60kah1abt7" path="res://Scenes/UI/UICoffin.tscn" id="2_ov8hg"]
+
+[node name="UICursor" type="Control" node_paths=PackedStringArray("Renderer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1n7rt")
+Renderer = NodePath("UICoffin")
+
+[node name="UICoffin" parent="." instance=ExtResource("2_ov8hg")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+CanDrag = false

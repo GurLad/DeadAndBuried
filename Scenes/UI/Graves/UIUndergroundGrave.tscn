@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpdhu2f7cj8su"]
+
+[ext_resource type="PackedScene" uid="uid://166ul8to8vkx" path="res://Scenes/UI/Graves/AUIGrave.tscn" id="1_jgsro"]
+[ext_resource type="Script" uid="uid://c2ggai5hmlgqs" path="res://Scripts/UI/Graves/UIUndergroundGrave.cs" id="2_jgsro"]
+
+[node name="UIUndergroundGrave" node_paths=PackedStringArray("Icon") instance=ExtResource("1_jgsro")]
+script = ExtResource("2_jgsro")
+Icon = NodePath("TextureRect")

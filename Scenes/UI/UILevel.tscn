@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://br3s8f8txxth4"]
+
+[ext_resource type="Script" uid="uid://mdb26rwfba6t" path="res://Scripts/UI/UILevel.cs" id="1_r432v"]
+[ext_resource type="PackedScene" uid="uid://dpq60kah1abt7" path="res://Scenes/UI/UICoffin.tscn" id="2_h6fhm"]
+[ext_resource type="PackedScene" uid="uid://glx38nvnyb4q" path="res://Scenes/UI/UICemetery.tscn" id="3_7odr5"]
+[ext_resource type="PackedScene" uid="uid://bopd7gve03wr2" path="res://Scenes/UI/Graves/UISingleGrave.tscn" id="4_mthyr"]
+[ext_resource type="PackedScene" uid="uid://dpdhu2f7cj8su" path="res://Scenes/UI/Graves/UIUndergroundGrave.tscn" id="5_lk7ll"]
+[ext_resource type="PackedScene" uid="uid://4vgdtsf62fkw" path="res://Scenes/UI/Graves/UIMassGrave.tscn" id="6_wcjm8"]
+
+[node name="UILevel" type="Control" node_paths=PackedStringArray("CoffinHolder", "CemeteryHolder")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r432v")
+CoffinHolder = NodePath("CoffinsHolder")
+CemeteryHolder = NodePath("CemeteryHolder")
+SceneUICoffin = ExtResource("2_h6fhm")
+SceneUICemetery = ExtResource("3_7odr5")
+SceneUISingleGrave = ExtResource("4_mthyr")
+SceneUIUndergroundGrave = ExtResource("5_lk7ll")
+SceneUIMassGrave = ExtResource("6_wcjm8")
+
+[node name="CemeteryHolder" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoffinsHolder" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2

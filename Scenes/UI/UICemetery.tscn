@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://glx38nvnyb4q"]
+
+[ext_resource type="Script" uid="uid://djf80dn04gvnl" path="res://Scripts/UI/UICemetery.cs" id="1_k1jfn"]
+
+[node name="UICemetery" type="MarginContainer" node_paths=PackedStringArray("Background", "GravesHolder")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k1jfn")
+Background = NodePath("Background")
+GravesHolder = NodePath("CenterContainer/GravesHolder")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="GravesHolder" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 10

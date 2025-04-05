@@ -9,7 +9,7 @@ public partial class UILevel : Control
     [ExportGroup("Scenes")]
     [Export] private PackedScene SceneUICoffin;
     [Export] private PackedScene SceneUICemetery;
-    [ExportCategory("Graves")]
+    [ExportSubgroup("Graves")]
     [Export] private PackedScene SceneUISingleGrave;
     [Export] private PackedScene SceneUIUndergroundGrave;
     [Export] private PackedScene SceneUIMassGrave;

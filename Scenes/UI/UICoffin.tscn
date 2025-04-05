@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpq60kah1abt7"]
+
+[ext_resource type="Script" uid="uid://ryvgvhg38xqt" path="res://Scripts/UI/UICoffin.cs" id="1_vk31p"]
+
+[node name="UICoffin" type="MarginContainer" node_paths=PackedStringArray("Icon")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vk31p")
+Icon = NodePath("Icon")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
