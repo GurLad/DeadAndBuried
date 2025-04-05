@@ -16,5 +16,7 @@ public partial class Level : Node
         base._Ready();
         LevelGeneratorData level = LevelGeneratorLoader.GetRandom(a => a.ID == SaveData.CurrentLevel);
         Coffins = Generator.GenerateCoffins(level);
+        Graves = Generator.GenerateGraves(level, SaveData);
+        
     }
 }

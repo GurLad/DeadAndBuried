@@ -25,11 +25,11 @@ public partial class GraveIconLoader : AGameLoader<GraveIconLoader, (GraveType T
 
     protected override List<(GraveType Type, int IconID)> GetAllInternal(Func<(GraveType Type, int IconID), bool> predicate)
     {
-        for (int i = 0; i < (int)GraveType.EndMarker; i++)
+        for (GraveType i = 0; i < GraveType.EndMarker; i++)
         {
-            if (predicate(((GraveType)i, 0)))
+            if (predicate((i, 0)))
             {
-                return Icons.SafeGet((GraveType)i).ConvertAll((a, j) => ((GraveType)i, j));
+                return Icons.SafeGet(i).ConvertAll((a, j) => (i, j));
             }
         }
         GD.PushError("[GraveIconLoader]: Bad type!");

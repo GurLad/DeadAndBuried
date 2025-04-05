@@ -41,7 +41,14 @@ public partial class LevelGenerator : Node
             }
             result.AddRange(singleGraves.Values);
         }
-        // TBA: Multi
+        for (GraveType i = GraveType.Mass; i < GraveType.EndMarker; i++)
+        {
+            MassGrave massGrave = new MassGrave();
+            massGrave.Data.IconID = GraveIconLoader.GetRandom(a => a.Type == i).IconID;
+            massGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[i];
+            massGrave.SetType(i);
+            result.Add(massGrave);
+        }
         return result;
     }
 
@@ -95,6 +102,6 @@ public partial class LevelGenerator : Node
         }
         people.AddRange(processedPeople);
         people.AddRange(level.HardcodedCoffins);
-        return people;
+        return people.Shuffle();
     }
 }

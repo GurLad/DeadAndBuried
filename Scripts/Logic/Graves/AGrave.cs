@@ -4,6 +4,7 @@ using System;
 public abstract partial class AGrave : Node
 {
     public GraveData Data { get; } = new GraveData();
+    public abstract GraveType Type { get; }
 
     [Signal]
     public delegate void OnFilledEventHandler(AGrave grave, Coffin coffin);

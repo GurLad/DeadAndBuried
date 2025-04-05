@@ -3,6 +3,7 @@ using System;
 
 public partial class UndergroundGrave : AGrave
 {
+    public override GraveType Type => GraveType.Underground;
     public SingleGrave OvergroundGrave;
 
     public override bool CanFill(Coffin coffin)
