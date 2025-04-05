@@ -12,7 +12,7 @@ public enum CoffinType
 
 public class CoffinData
 {
-    public PersonData PersonData;
+    public PersonData PersonData { get; } = new PersonData();
 
     private CoffinType _types = CoffinType.Single;
     public CoffinType Types => _types | (PersonData.IsZombie ? CoffinType.Zombie : CoffinType.None);
