@@ -9,4 +9,9 @@ public partial class Coffin : Node
     {
         Data = data;
     }
+
+    public override string ToString()
+    {
+        return Data.PersonData.Name + Data.PersonData.FamilyName;
+    }
 }

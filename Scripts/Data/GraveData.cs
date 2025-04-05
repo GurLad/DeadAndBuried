@@ -3,20 +3,22 @@ using System;
 
 public enum GraveType
 {
-    Single,
-    Underground,
-    Mass,
-    Burn,
-    Spaceship,
-    EndMarker
+    Single = 1,
+    Underground = 2,
+    Mass = 3,
+    Burn = 4,
+    Spaceship = 5,
+    EndMarker = 6,
+    Filled = 64
 }
 
 public class GraveData
 {
     public PersonData PersonData { get; set; } = null;
-    public int IconID { get; set; }
+    public int FilledIconID { get; set; }
     public bool IsEmpty => PersonData == null;
     public CoffinType CompatibleTypes { get; set; } = CoffinType.All;
+    public int ScoreMultiplier;
 
     public bool IsCompatible(CoffinData coffinData)
     {

@@ -7,7 +7,7 @@ public abstract partial class AGrave : Node
     public abstract GraveType Type { get; }
 
     [Signal]
-    public delegate void OnFilledEventHandler(AGrave grave, Coffin coffin);
+    public delegate void OnFilledEventHandler(AGrave grave, Coffin coffin, int score);
 
     public void Fill(Coffin coffin)
     {
@@ -15,10 +15,9 @@ public abstract partial class AGrave : Node
         {
             GD.PushError("[Coffin]: Trying to fill an incompatible grave!");
         }
-        ForceFill(coffin);
-        EmitSignal(SignalName.OnFilled, this, coffin);
+        EmitSignal(SignalName.OnFilled, this, coffin, FillAndScore(coffin));
     }
 
     public abstract bool CanFill(Coffin coffin);
-    public abstract void ForceFill(Coffin coffin);
+    public abstract int FillAndScore(Coffin coffin);
 }

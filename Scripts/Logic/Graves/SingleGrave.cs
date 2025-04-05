@@ -4,16 +4,30 @@ using System.Collections.Generic;
 
 public partial class SingleGrave : AGrave
 {
-    public override GraveType Type => throw new NotImplementedException();
+    public override GraveType Type => GraveType.Single;
     public List<SingleGrave> AdjacentGraves { get; } = new List<SingleGrave>();
+
+    [Signal]
+    public delegate void OnMatchedEventHandler(SingleGrave grave);
 
     public override bool CanFill(Coffin coffin)
     {
         return Data.IsEmpty && Data.IsCompatible(coffin.Data);
     }
 
-    public override void ForceFill(Coffin coffin)
+    public override int FillAndScore(Coffin coffin)
     {
         Data.PersonData = coffin.Data.PersonData;
+        List<SingleGrave> matchingAdjacent = AdjacentGraves.FindAll(a => a.Data.PersonData.FamilyName == Data.PersonData.FamilyName);
+        if (matchingAdjacent.Count > 0)
+        {
+            matchingAdjacent.ForEach(a => a.EmitSignal(SignalName.OnMatched, a));
+            EmitSignal(SignalName.OnMatched, this);
+            return (1 + matchingAdjacent.Count) * Data.ScoreMultiplier;
+        }
+        else
+        {
+            return Data.ScoreMultiplier;
+        }
     }
 }

@@ -11,9 +11,9 @@ public partial class MassGrave : AGrave
         return Data.IsCompatible(coffin.Data);
     }
 
-    public override void ForceFill(Coffin coffin)
+    public override int FillAndScore(Coffin coffin)
     {
-        // Don't care
+        return Data.ScoreMultiplier;
     }
 
     public void SetType(GraveType type)

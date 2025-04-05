@@ -11,8 +11,8 @@ public partial class UndergroundGrave : AGrave
         return OvergroundGrave.Data.IsEmpty && Data.IsEmpty && Data.IsCompatible(coffin.Data);
     }
 
-    public override void ForceFill(Coffin coffin)
+    public override int FillAndScore(Coffin coffin)
     {
-        OvergroundGrave.ForceFill(coffin);
+        return Mathf.RoundToInt(OvergroundGrave.FillAndScore(coffin) * (float)Data.ScoreMultiplier / OvergroundGrave.Data.ScoreMultiplier);
     }
 }

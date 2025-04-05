@@ -17,7 +17,7 @@ public partial class LevelGenerator : Node
                     SingleGrave newGrave = new SingleGrave();
                     Vector2I index = new Vector2I(x, y);
                     newGrave.Data.PersonData = saveData.Graves.SafeGet(index.Serializable())?.PersonData;
-                    newGrave.Data.IconID = saveData.Graves.SafeGet(index.Serializable())?.IconID ?? GraveIconLoader.GetRandom(a => a.Type == GraveType.Single).IconID;
+                    newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index.Serializable())?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];
                     index.GetNeighbors().ForEach(a =>
                     {
@@ -32,7 +32,7 @@ public partial class LevelGenerator : Node
                     if (level.GraveCompatibleTypes.ContainsKey(GraveType.Underground))
                     {
                         UndergroundGrave undergroundGrave = new UndergroundGrave();
-                        undergroundGrave.Data.IconID = GraveIconLoader.GetRandom(a => a.Type == GraveType.Underground).IconID;
+                        undergroundGrave.Data.FilledIconID = GraveIconLoader.GetRandom(a => a.Type == (GraveType.Underground | GraveType.Filled)).IconID;
                         undergroundGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Underground];
                         undergroundGrave.OvergroundGrave = newGrave;
                         result.Add(undergroundGrave);
@@ -44,7 +44,7 @@ public partial class LevelGenerator : Node
         for (GraveType i = GraveType.Mass; i < GraveType.EndMarker; i++)
         {
             MassGrave massGrave = new MassGrave();
-            massGrave.Data.IconID = GraveIconLoader.GetRandom(a => a.Type == i).IconID;
+            massGrave.Data.FilledIconID = GraveIconLoader.GetRandom(a => a.Type == (i | GraveType.Filled)).IconID;
             massGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[i];
             massGrave.SetType(i);
             result.Add(massGrave);
