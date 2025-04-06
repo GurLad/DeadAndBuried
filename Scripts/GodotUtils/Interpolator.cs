@@ -10,7 +10,7 @@ public partial class Interpolator : Node
     // Properties
     public Action OnFinish { private get; set; } = null;
     public bool Active { get; private set; }
-    public Mode InterruptMode { private get; set; } = Mode.Warning; 
+    public Mode InterruptMode { private get; set; } = Mode.Allowed; 
 
     private Timer timer = new Timer();
     private List<InterpolateObject> objects = new List<InterpolateObject>();

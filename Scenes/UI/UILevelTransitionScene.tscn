@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvx171hjny3ak"]
+
+[ext_resource type="Script" uid="uid://dvq5uounul0hw" path="res://Scripts/UI/UILevelTransitionScene.cs" id="1_ow70y"]
+[ext_resource type="FontFile" uid="uid://b4d6lvfaihdaa" path="res://Fonts/VCRFont.ttf" id="2_wvm4j"]
+
+[node name="UILevelTransitionScene" type="ColorRect" node_paths=PackedStringArray("NightLabel")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_ow70y")
+NightLabel = NodePath("Label")
+ShowHideTime = 0.7
+HoldTime = 1.2
+DelayTime = 0.2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wvm4j")
+text = "NIGHT 999"
+horizontal_alignment = 1
+vertical_alignment = 1

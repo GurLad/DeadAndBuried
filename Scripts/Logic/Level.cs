@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class Level : Node
 {
-    private static SaveData SaveData { get; } = new SaveData();
+    public static SaveData SaveData { get; } = new SaveData();
 
     [Export] private LevelGenerator Generator;
     [Export] private UILevel UILevel;
