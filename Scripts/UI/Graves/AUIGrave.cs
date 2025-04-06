@@ -9,11 +9,14 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
     {
         None = 0,
         CanDrop = 1,
-        Hover = 2
+        Hover = 2,
+        Empty = 4,
+        CanDropHover = CanDrop | Hover
     }
 
     [Export] private TextureRect Icon;
     [ExportCategory("Highlight")]
+    [Export] private Color EmptyOutline { get; set; }
     [Export] private Color CanDropOutline { get; set; }
     [Export] private Color HoverOutline { get; set; }
 
@@ -39,6 +42,10 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
             GD.PushError("[UICoffin]: No shader material!");
             GetTree().Quit();
         }
+        if (grave.Data.IsEmpty)
+        {
+            Highlight |= HighlightMode.Empty;
+        }
         Render(Grave);
     }
 
@@ -60,7 +67,12 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
     public void RenderHighlight()
     {
         ShaderMaterial.SetShaderParameter("showOutline", Highlight != HighlightMode.None);
-        ShaderMaterial.SetShaderParameter("outlineColor", (Highlight & HighlightMode.Hover) != HighlightMode.None ? HoverOutline : CanDropOutline);
+        ShaderMaterial.SetShaderParameter("outlineColor",
+            (Highlight & HighlightMode.Hover) != HighlightMode.None ?
+                HoverOutline :
+                ((Highlight & HighlightMode.CanDrop) != HighlightMode.None ?
+                    CanDropOutline :
+                    EmptyOutline));
     }
 
     private void RenderFilled(Coffin coffin, int score)
@@ -80,7 +92,7 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
 
     private void CursorDroppedCoffin(UICursor cursor, Coffin coffin)
     {
-        Highlight = HighlightMode.None;
+        Highlight &= ~HighlightMode.CanDropHover;
         RenderHighlight();
     }
 
@@ -123,6 +135,7 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
             if (cursor.HeldCoffin != null && Grave.CanFill(cursor.HeldCoffin))
             {
                 cursor.DropCoffin(cursor.HeldCoffin, Grave);
+                Highlight &= ~HighlightMode.Empty;
             }
             else
             {

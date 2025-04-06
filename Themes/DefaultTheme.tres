@@ -1,3 +1,6 @@
-[gd_resource type="Theme" format=3 uid="uid://dud5q6q24a4g4"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dud5q6q24a4g4"]
+
+[ext_resource type="FontFile" uid="uid://cbvpu5p4qvrnu" path="res://Fonts/BetterPixels.ttf" id="1_ko64t"]
 
 [resource]
+default_font = ExtResource("1_ko64t")

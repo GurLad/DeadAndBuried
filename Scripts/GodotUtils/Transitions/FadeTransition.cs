@@ -5,7 +5,7 @@ public partial class FadeTransition : ColorRect, ITransition
 {
     [Export] private float transitionTime;
 
-    private Interpolator interpolator = new Interpolator();
+    protected Interpolator interpolator = new Interpolator();
 
     public override void _Ready()
     {
