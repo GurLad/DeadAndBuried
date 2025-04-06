@@ -54,7 +54,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
                 "BWave: " + "HIIIIIIIIIIIII!".RichTextWave() + " Welcome to your new " + "cemetery!".RichTextColor(RED_COLOR).RichTextWave(),
                 "BPoint: My name is " + "John Jones!".RichTextColor(RED_COLOR).RichTextWave() + " I'll help you run this place!",
                 "BSmile: All you have to do is bury the dead. Simply drag their coffins from the " + "left side of the screen...".RichTextWave().RichTextColor(RED_COLOR),
-                "BWave: To " + "anywhere you want".RichTextWave().RichTextColor(RED_COLOR) + " in the middle! This is your cemetary, after all!",
+                "BWave: To " + "anywhere you want".RichTextWave().RichTextColor(RED_COLOR) + " in the middle! This is your cemetery, after all!",
                 "BThink: Oh, but don't forget, " + "family members usually want to be buried together.".RichTextWave().RichTextColor(RED_COLOR),
                 "BPoint: That's all from me! Have an " + "amazing night!".RichTextWave(),
             }
@@ -82,7 +82,10 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "BWave: Another day TBA"
+                "BWave: Welcome back! I'm " + "sooooooo".RichTextWave().RichTextColor(RED_COLOR) + " glad you're back!",
+                "BOops: My previous job fired me after one day, so getting to come here a second time is a " + "huge relief!".RichTextWave().RichTextColor(RED_COLOR),
+                "BPoint: Anyway, we got another " + "shipment of corpses".RichTextWave() + " to bury during the day!",
+                "BSmile: You know the drill by now - are you ready to " + "place some tombs?!".RichTextShake().RichTextColor(RED_COLOR),
             }
         ),
         new LevelGeneratorData
@@ -105,7 +108,12 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "BWave: Something missing? Nah, can't be"
+                "BWave: Hello again! " + "Missed me?".RichTextWave() + " I missed you!".RichTextColor(RED_COLOR),
+                "BPoint: Guess what?\nThat's right! " + "We get to bury more people this night!".RichTextWave().RichTextColor(RED_COLOR),
+                "BPoint: ...",
+                "BThink: Say... Is it just me, or are we " + "missing a grave here?".RichTextShake().RichTextColor(RED_COLOR),
+                "BOops: Uh... " + "I-It's probably nothing!".RichTextShake().RichTextColor(RED_COLOR) + " I mean, everyone misplaces a corpse once in a while, " + "right?".RichTextWave().RichTextColor(RED_COLOR),
+                "BWave: Well, there's no point thinking about it when we've got " + "graves to dig!".RichTextWave(),
             }
         ),
         new LevelGeneratorData
@@ -129,7 +137,11 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "HWave: Okay, let's try underground"
+                "HOops: " + "H-Hey there!".RichTextWave() + " Sorry I'm late, I had a bit of an... " + "accident".RichTextShake().RichTextColor(GREEN_COLOR) + " preparing our corpses.",
+                "HThink: And... It looks like " + "some more graves".RichTextWave().RichTextColor(RED_COLOR) + " got dug out somehow...",
+                "HOops: W-Well, maybe we should just try " + "digging them deeper?".RichTextWave().RichTextColor(RED_COLOR),
+                "HSmile: You can move underground by pressing the " + "big green arrow!".RichTextWave().RichTextColor(GREEN_COLOR),
+                "HPoint: Anyway, " + "I think I'm gonna go now.".RichTextShake() + " Happy undertaking!",
             }
         ),
         new LevelGeneratorData
@@ -156,7 +168,12 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "ZWave: Okay, let's try underground"
+                "ZWave: " + "Hellooooooooo".RichTextWave().RichTextColor(GREEN_COLOR) + " again! Are you doing fantastic? I'm doing " + "fantastic!".RichTextWave().RichTextColor(GREEN_COLOR),
+                "ZPoint: They opened a new " + "brains".RichTextShake() + " place near where I live, and it's " + "amaaaaaaazing!".RichTextWave().RichTextColor(GREEN_COLOR),
+                "ZThink: Oh, but... It looks like " + "burying them deeper".RichTextWave() + " didn't work".RichTextColor(RED_COLOR) + ", huh?",
+                "ZOops: I think those holes were just too shallow...",
+                "ZPoint: So I dug a " + "biiiiiiiiiiiig".RichTextWave().RichTextColor(GREEN_COLOR) + " one in the back!",
+                "ZSmile: That should go " + "great!".RichTextColor(GREEN_COLOR).RichTextWave(),
             }
         ),
         new LevelGeneratorData
@@ -183,7 +200,13 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "ZWave: Time to go to space."
+                "ZSmile: Heeeeeey... I've got " + "good news".RichTextWave().RichTextColor(GREEN_COLOR) + " and " + "bad news.".RichTextWave().RichTextColor(RED_COLOR),
+                "ZOops: Bad news: " + "everyone climbed out of that hole.".RichTextWave().RichTextColor(RED_COLOR),
+                "ZPoint: Good news: " + "I climbed out of that hole!".RichTextWave().RichTextColor(GREEN_COLOR),
+                "ZSmile: But don't worry, I think I've got it now. I had a " + "grrrrrrrrreat".RichTextWave().RichTextColor(GREEN_COLOR) + " idea!",
+                "ZWave: We'll send all the zombies to " + "Mars! ".RichTextColor(RED_COLOR) + "There's " + "nooooooo way".RichTextWave().RichTextColor(RED_COLOR) + " they'll ever get back from there!",
+                "ZThink: You can't go deeper than the " + "DEPTHS".RichTextColor(RED_COLOR).RichTextWave() + " of space, after all.",
+                "ZPoint: The rocket is ready - just " + "load the corpses!".RichTextWave().RichTextColor(GREEN_COLOR),
             }
         ),
     };
