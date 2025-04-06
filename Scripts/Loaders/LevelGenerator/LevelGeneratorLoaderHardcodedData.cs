@@ -77,7 +77,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             graveScoreMultipliers: GraveScoreMultipliers,
             graveCompatibleTypes: new Dictionary<GraveType, CoffinType>()
             {
-                { GraveType.Single, CoffinType.Single }
+                { GraveType.Single, CoffinType.Single | CoffinType.Zombie }
             },
             assistantType: "1",
             events: new List<string>()

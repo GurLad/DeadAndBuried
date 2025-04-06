@@ -21,10 +21,6 @@ public partial class LevelGenerator : Node
                         continue;
                     }
                     SingleGrave newGrave = new SingleGrave();
-                    if (saveData.Graves.SafeGet(index)?.PersonData != null)
-                    {
-                        GD.Print("lasdasdd");
-                    }
                     newGrave.Data.PersonData = saveData.Graves.SafeGet(index)?.PersonData;
                     newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index)?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];
