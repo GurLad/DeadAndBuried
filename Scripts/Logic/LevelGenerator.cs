@@ -10,9 +10,9 @@ public partial class LevelGenerator : Node
         if (level.GraveCompatibleTypes.ContainsKey(GraveType.Single))
         {
             Dictionary<Vector2I, SingleGrave> singleGraves = new Dictionary<Vector2I, SingleGrave>();
-            for (int x = 0; x < level.SingleGravesGridSize.X; x++)
+            for (int y = 0; y < level.SingleGravesGridSize.Y; y++)
             {
-                for (int y = 0; y < level.SingleGravesGridSize.Y; y++)
+                for (int x = 0; x < level.SingleGravesGridSize.X; x++)
                 {
                     Vector2I index = new Vector2I(x, y);
                     if (level.SingleGravesBlacklist.Contains(index))
@@ -24,6 +24,7 @@ public partial class LevelGenerator : Node
                     newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index.Serializable())?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];
                     newGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[GraveType.Single];
+                    newGrave.Pos = index;
                     index.GetNeighbors(true).ForEach(a =>
                     {
                         SingleGrave neighbor = singleGraves.SafeGet(a);

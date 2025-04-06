@@ -6,6 +6,7 @@ public partial class SingleGrave : AGrave
 {
     public override GraveType Type => GraveType.Single;
     public List<SingleGrave> AdjacentGraves { get; } = new List<SingleGrave>();
+    public Vector2I Pos { get; set; }
 
     [Signal]
     public delegate void OnMatchedEventHandler(SingleGrave grave);
@@ -17,6 +18,7 @@ public partial class SingleGrave : AGrave
 
     public override int FillAndScore(Coffin coffin)
     {
+        //GD.Print(">>>>>>>> " + Pos + " near " + string.Join(", ", AdjacentGraves.ConvertAll(a => a.Pos)));
         Data.PersonData = coffin.Data.PersonData;
         List<SingleGrave> matchingAdjacent = AdjacentGraves.FindAll(a => a.Data.PersonData?.FamilyName == Data.PersonData.FamilyName);
         if (matchingAdjacent.Count > 0)
