@@ -11,6 +11,6 @@ public partial class UISingleGrave : AUIGraveTyped<SingleGrave>
 
     private void RenderMatched(SingleGrave grave)
     {
-        // TBA...
+        UIVFXController.Current.DisplayMatchVFX(this);
     }
 }

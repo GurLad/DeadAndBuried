@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cewtnn02vqvsc"]
+
+[ext_resource type="Texture2D" uid="uid://bt54fkrxkpcdl" path="res://Sprites/UI/MatchIcon.png" id="1_hjpgl"]
+[ext_resource type="Script" uid="uid://cttrkjpcsg44n" path="res://Scripts/UI/UIMatchIndicator.cs" id="2_ctt36"]
+
+[node name="UIMatchIndicator" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hjpgl")
+stretch_mode = 3
+script = ExtResource("2_ctt36")
+HoldTime = 0.5
+DelayTime = 0.01
+transitionTime = 0.2

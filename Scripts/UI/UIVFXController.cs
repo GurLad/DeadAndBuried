@@ -7,6 +7,7 @@ public partial class UIVFXController : Node
     public static UIVFXController Current { get; private set; }
 
     [Export] private PackedScene SceneScoreText;
+    [Export] private PackedScene SceneMatchIndicator;
 
     public override void _Ready()
     {
@@ -21,5 +22,14 @@ public partial class UIVFXController : Node
         Vector2 pos = control.GlobalPosition;// + damageText.Size / 2;
         damageText.Display(amount, pos);
         damageText.Position = pos + new Vector2(ExtensionMethods.RNG.Next(-5, 6), ExtensionMethods.RNG.Next(-5, 6));
+    }
+
+    public void DisplayMatchVFX(Control control)
+    {
+        UIMatchIndicator matchIcon = SceneMatchIndicator.Instantiate<UIMatchIndicator>();
+        AddChild(matchIcon);
+        Vector2 pos = control.GlobalPosition + Vector2.Up * matchIcon.Size.X / 2;
+        matchIcon.Display();
+        matchIcon.Position = pos + new Vector2(ExtensionMethods.RNG.Next(-5, 6), ExtensionMethods.RNG.Next(-5, 6));
     }
 }
