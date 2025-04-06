@@ -40,7 +40,8 @@ public partial class Level : Node
 
     private void FinishLevel()
     {
-        Graves.ConvertAll(a => a is SingleGrave grave ? grave : null).FindAll(a => a != null).ForEach(a => SaveData.Graves.AddOrSet(a.Pos.Serializable(), a.Data));
+        Graves.ConvertAll(a => a is SingleGrave grave ? grave : null).FindAll(a => a != null && a.Data.PersonData != null && !a.Data.PersonData.IsZombie)
+            .ForEach(a => SaveData.Graves.AddOrSet(a.Pos.Serializable(), a.Data));
         SaveData.CurrentLevel++;
         SceneController.Current.TransitionToScene("LevelIntro");
     }

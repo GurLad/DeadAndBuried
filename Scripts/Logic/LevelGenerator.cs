@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class LevelGenerator : Node
 {
@@ -20,6 +21,10 @@ public partial class LevelGenerator : Node
                         continue;
                     }
                     SingleGrave newGrave = new SingleGrave();
+                    if (saveData.Graves.SafeGet(index.Serializable())?.PersonData != null)
+                    {
+                        GD.Print("lasdasdd");
+                    }
                     newGrave.Data.PersonData = saveData.Graves.SafeGet(index.Serializable())?.PersonData;
                     newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index.Serializable())?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];
@@ -86,6 +91,26 @@ public partial class LevelGenerator : Node
         {
             people.Add(PersonLoader.GetRandom(a => a.IsZombie));
         }
+        for (int i = 0; i < level.CopyOldFamilyCoffinCount; i++)
+        {
+            if (people.Count <= 0)
+            {
+                GD.PushError("[Level]: Not enough people!");
+                GetTree().Quit();
+            }
+            PersonData selected = people.RandomItemInList();
+            people.Remove(selected);
+            processedPeople.Add(selected);
+            var options = Level.SaveData.Graves.Values.ToList().FindAll(a => a.PersonData != null);
+            if (options.Count > 0)
+            {
+                selected.FamilyName = options.RandomItemInList().PersonData.FamilyName;
+            }
+            else
+            {
+                GD.PushError("[Level]: Not enough previous graves!");
+            }
+        }
         for (int i = 0; i < level.CopyNewFamilyCoffinCount; i++)
         {
             if (people.Count <= 0)
@@ -97,19 +122,6 @@ public partial class LevelGenerator : Node
             people.Remove(selected);
             processedPeople.Add(selected);
             selected.FamilyName = people.RandomItemInList().FamilyName;
-        }
-        for (int i = 0; i < level.CopyOldFamilyCoffinCount; i++)
-        {
-            if (people.Count <= 0)
-            {
-                GD.PushError("[Level]: Not enough people!");
-                GetTree().Quit();
-            }
-            PersonData selected = people.RandomItemInList();
-            people.Remove(selected);
-            processedPeople.Add(selected);
-            // TODO
-            GD.PushError("[Level]: Not implemented yet! CopyOldFamilyCoffinCount");
         }
         people.AddRange(processedPeople);
         people.AddRange(level.HardcodedCoffins);

@@ -82,7 +82,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "Wave: Test"
+                "BWave: Test"
             }
         ),
     };

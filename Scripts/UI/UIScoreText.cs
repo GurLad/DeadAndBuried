@@ -62,7 +62,6 @@ public partial class UIScoreText : Label
                     0));
             interpolator.OnFinish = () => QueueFree();
         };
-        GD.Print("Gdffdsfsd");
     }
 
     public override void _Process(double delta)
