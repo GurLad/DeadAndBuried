@@ -28,7 +28,7 @@ public partial class UIVFXController : Node
     {
         UIMatchIndicator matchIcon = SceneMatchIndicator.Instantiate<UIMatchIndicator>();
         AddChild(matchIcon);
-        Vector2 pos = control.GlobalPosition + Vector2.Up * matchIcon.Size.X / 2;
+        Vector2 pos = control.GlobalPosition + Vector2.Up * (matchIcon.Size.Y / 2 - 32); // whatevs
         matchIcon.Display();
         matchIcon.Position = pos + new Vector2(ExtensionMethods.RNG.Next(-5, 6), ExtensionMethods.RNG.Next(-5, 6));
     }
