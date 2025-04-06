@@ -14,8 +14,12 @@ public partial class LevelGenerator : Node
             {
                 for (int y = 0; y < level.SingleGravesGridSize.Y; y++)
                 {
-                    SingleGrave newGrave = new SingleGrave();
                     Vector2I index = new Vector2I(x, y);
+                    if (level.SingleGravesBlacklist.Contains(index))
+                    {
+                        continue;
+                    }
+                    SingleGrave newGrave = new SingleGrave();
                     newGrave.Data.PersonData = saveData.Graves.SafeGet(index.Serializable())?.PersonData;
                     newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index.Serializable())?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];

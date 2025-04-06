@@ -10,11 +10,12 @@ public partial class UILevel : Control
     [Export] private PackedScene SceneUICoffin;
     [Export] private PackedScene SceneUICemetery;
     [ExportSubgroup("Graves")]
+    [Export] private PackedScene SceneUIFakeGrave;
     [Export] private PackedScene SceneUISingleGrave;
     [Export] private PackedScene SceneUIUndergroundGrave;
     [Export] private PackedScene SceneUIMassGrave;
 
-    public void Init(List<AGrave> Graves, List<Coffin> Coffins)
+    public void Init(LevelGeneratorData level, List<AGrave> Graves, List<Coffin> Coffins)
     {
         Coffins.ForEach(a =>
         {
@@ -25,17 +26,20 @@ public partial class UILevel : Control
         List<SingleGrave> singleGraves = Graves.ConvertAll(a => a is SingleGrave grave ? grave : null).FindAll(a => a != null);
         if (singleGraves.Count > 0)
         {
-            FillCemetery(GraveType.Single, singleGraves);
+            UICemetery cemetery = InitCemetery<SingleGrave>(GraveType.Single);
+            FillCemeteryGrid(level, cemetery, GraveType.Single, singleGraves);
         }
         List<UndergroundGrave> undergroundGraves = Graves.ConvertAll(a => a is UndergroundGrave grave ? grave : null).FindAll(a => a != null);
         if (undergroundGraves.Count > 0)
         {
-            FillCemetery(GraveType.Underground, undergroundGraves);
+            UICemetery cemetery = InitCemetery<UndergroundGrave>(GraveType.Single);
+            FillCemeteryGrid(level, cemetery, GraveType.Underground, undergroundGraves);
         }
         List<MassGrave> massGraves = Graves.ConvertAll(a => a is MassGrave grave ? grave : null).FindAll(a => a != null);
         if (massGraves.Count > 0 && massGraves.Count <= 1)
         {
-            FillCemetery(massGraves[0].Type, massGraves);
+            UICemetery cemetery = InitCemetery<MassGrave>(GraveType.Single);
+            FillCemetery(cemetery, massGraves[0].Type, massGraves);
         }
         else if (massGraves.Count > 0)
         {
@@ -43,28 +47,61 @@ public partial class UILevel : Control
         }
     }
 
-    private void FillCemetery<GraveClass>(GraveType type, List<GraveClass> graves) where GraveClass : AGrave
+    private UICemetery InitCemetery<GraveClass>(GraveType type) where GraveClass : AGrave
     {
         UICemetery cemetery = SceneUICemetery.Instantiate<UICemetery>();
         cemetery.Init(CemeteryLoader.GetRandom(a => a.Type == type));
         CemeteryHolder.AddChild(cemetery);
+        return cemetery;
+    }
+
+    private void FillCemeteryGrid<GraveClass>(LevelGeneratorData level, UICemetery cemetery, GraveType type, List<GraveClass> graves) where GraveClass : AGrave
+    {
+        int i = 0;
+        for (int y = 0; y < level.SingleGravesGridSize.Y; y++)
+        {
+            for (int x = 0; x < level.SingleGravesGridSize.X; x++)
+            {
+                Vector2I index = new Vector2I(x, y);
+                if (level.SingleGravesBlacklist.Contains(index))
+                {
+                    cemetery.AddGrave(SceneUIFakeGrave.Instantiate<Control>());
+                    continue;
+                }
+                if (i > graves.Count)
+                {
+                    GD.PushError("[UILevel]: Too many grave!");
+                    return;
+                }
+                AddGraveToCemetery(cemetery, type, graves[i++]);
+            }
+        }
+    }
+
+    private void FillCemetery<GraveClass>(UICemetery cemetery, GraveType type, List<GraveClass> graves) where GraveClass : AGrave
+    {
         graves.ForEach(a =>
         {
-            AUIGrave uiGrave;
-            switch (type)
-            {
-                case GraveType.Single:
-                    uiGrave = CreateAndInitUIGrave<SingleGrave, UISingleGrave>(a is SingleGrave s ? s : null);
-                    break;
-                case GraveType.Underground:
-                    uiGrave = CreateAndInitUIGrave<UndergroundGrave, UIUndergroundGrave>(a is UndergroundGrave u ? u : null);
-                    break;
-                default:
-                    uiGrave = CreateAndInitUIGrave<MassGrave, UIMassGrave>(a is MassGrave m ? m : null);
-                    break;
-            }
-            cemetery.AddGrave(uiGrave);
+            AddGraveToCemetery(cemetery, type, a);
         });
+    }
+
+    private void AddGraveToCemetery<GraveClass>(UICemetery cemetery, GraveType type, GraveClass grave) where GraveClass : AGrave
+    {
+        AUIGrave uiGrave;
+        switch (type)
+        {
+            case GraveType.Single:
+                uiGrave = CreateAndInitUIGrave<SingleGrave, UISingleGrave>(grave is SingleGrave s ? s : null);
+                break;
+            case GraveType.Underground:
+                uiGrave = CreateAndInitUIGrave<UndergroundGrave, UIUndergroundGrave>(grave is UndergroundGrave u ? u : null);
+                break;
+            default:
+                uiGrave = CreateAndInitUIGrave<MassGrave, UIMassGrave>(grave is MassGrave m ? m : null);
+                break;
+        }
+        cemetery.AddGrave(uiGrave);
     }
 
     private UIGraveClass CreateAndInitUIGrave<GraveClass, UIGraveClass>(GraveClass grave) where GraveClass : AGrave where UIGraveClass : AUIGraveTyped<GraveClass>

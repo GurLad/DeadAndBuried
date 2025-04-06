@@ -19,7 +19,7 @@ public partial class Level : Node
         LevelGeneratorData level = LevelGeneratorLoader.GetRandom(a => a.ID == SaveData.CurrentLevel);
         Coffins = Generator.GenerateCoffins(level);
         Graves = Generator.GenerateGraves(level, SaveData);
-        uiLevel.Init(Graves, Coffins);
+        uiLevel.Init(level, Graves, Coffins);
         conversationPlayer.BeginConversation(level.Events);
     }
 }

@@ -14,7 +14,7 @@ public partial class UICemetery : Control
         Offset.CustomMinimumSize = Vector2.Down * data.YPositionMod * 2;
     }
 
-    public void AddGrave(AUIGrave uiGrave)
+    public void AddGrave(Control uiGrave)
     {
         GravesHolder.AddChild(uiGrave);
     }

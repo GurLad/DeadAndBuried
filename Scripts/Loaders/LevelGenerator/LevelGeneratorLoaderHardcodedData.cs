@@ -5,7 +5,18 @@ using System.Collections.Generic;
 public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, LevelGeneratorData>
 {
     private static readonly Vector2I SingleGravesGridSize = new Vector2I(10, 4);
-    private static readonly List<Vector2I> SingleGravesBlacklist = new List<Vector2I>();
+    private static readonly List<Vector2I> SingleGravesBlacklist = new List<Vector2I>()
+    {
+        new Vector2I(0, 0),
+        new Vector2I(1, 0),
+        new Vector2I(4, 0),
+        new Vector2I(5, 0),
+        new Vector2I(6, 2),
+        new Vector2I(7, 2),
+        new Vector2I(6, 3),
+        new Vector2I(7, 3),
+        new Vector2I(8, 3),
+    };
     private static Dictionary<GraveType, int> GraveScoreMultipliers { get; } = new Dictionary<GraveType, int>()
     {
         { GraveType.Single, 1000 },

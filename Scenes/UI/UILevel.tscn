@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://br3s8f8txxth4"]
+[gd_scene load_steps=11 format=3 uid="uid://br3s8f8txxth4"]
 
 [ext_resource type="Script" uid="uid://mdb26rwfba6t" path="res://Scripts/UI/UILevel.cs" id="1_r432v"]
 [ext_resource type="PackedScene" uid="uid://dpq60kah1abt7" path="res://Scenes/UI/UICoffin.tscn" id="2_h6fhm"]
 [ext_resource type="PackedScene" uid="uid://glx38nvnyb4q" path="res://Scenes/UI/UICemetery.tscn" id="3_7odr5"]
+[ext_resource type="PackedScene" uid="uid://db2y7hjnd1k6k" path="res://Scenes/UI/Graves/UIFakeGrave.tscn" id="4_lk7ll"]
 [ext_resource type="PackedScene" uid="uid://bopd7gve03wr2" path="res://Scenes/UI/Graves/UISingleGrave.tscn" id="4_mthyr"]
 [ext_resource type="PackedScene" uid="uid://dpdhu2f7cj8su" path="res://Scenes/UI/Graves/UIUndergroundGrave.tscn" id="5_lk7ll"]
 [ext_resource type="PackedScene" uid="uid://4vgdtsf62fkw" path="res://Scenes/UI/Graves/UIMassGrave.tscn" id="6_wcjm8"]
@@ -29,6 +30,7 @@ CoffinHolder = NodePath("CenterContainer/MarginContainer/ScrollContainer/Coffins
 CemeteryHolder = NodePath("CemeteryHolder")
 SceneUICoffin = ExtResource("2_h6fhm")
 SceneUICemetery = ExtResource("3_7odr5")
+SceneUIFakeGrave = ExtResource("4_lk7ll")
 SceneUISingleGrave = ExtResource("4_mthyr")
 SceneUIUndergroundGrave = ExtResource("5_lk7ll")
 SceneUIMassGrave = ExtResource("6_wcjm8")
