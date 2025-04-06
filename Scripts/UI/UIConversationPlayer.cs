@@ -24,8 +24,6 @@ public partial class UIConversationPlayer : Control
     [Export]
     private Label text;
     [Export]
-    private Label redText;
-    [Export]
     private Control clickBlocker;
     private Interpolator interpolator = new Interpolator();
     private float shownHeight;
@@ -95,18 +93,7 @@ public partial class UIConversationPlayer : Control
         {
             void TrueBegin()
             {
-                int nextIndex = -1;
-                Label currentLabel = text;
-                Label otherLabel = redText;
-                currentLabel.Text = otherLabel.Text = "";
-                while ((nextIndex = currentLine.IndexOf("|")) >= 0)
-                {
-                    currentLabel.Text += currentLine.Substring(0, nextIndex);
-                    otherLabel.Text += new string(' ', nextIndex);
-                    currentLine = currentLine.Length > nextIndex ? currentLine.Substring(nextIndex + 1) : "";
-                }
-                text.Text += currentLine;
-                otherLabel.Text += currentLine.Length > 0 ? new string(' ', currentLine.Length) : "";
+                text.Text = currentLine;
                 state = State.WaitForInput;
                 lines.RemoveAt(0);
                 interpolator.Interpolate(lineJumpTime / 2,
