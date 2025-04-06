@@ -16,7 +16,7 @@ public partial class CemeteryLoader : AGameLoader<CemeteryLoader, CemeteryData>
         (
             type: GraveType.Underground,
             location: Vector2I.Down,
-            yPositionMod: 0
+            yPositionMod: 34
         ),
         new CemeteryData
         (

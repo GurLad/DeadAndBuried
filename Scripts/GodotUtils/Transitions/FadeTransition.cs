@@ -3,7 +3,7 @@ using System;
 
 public partial class FadeTransition : Control, ITransition
 {
-    [Export] private float transitionTime;
+    [Export] private float transitionTime = 1;
 
     protected Interpolator interpolator = new Interpolator();
 

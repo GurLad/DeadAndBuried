@@ -140,7 +140,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
                 "HOops: " + "H-Hey there!".RichTextWave() + " Sorry I'm late, I had a bit of an... " + "accident".RichTextShake().RichTextColor(GREEN_COLOR) + " preparing our corpses.",
                 "HThink: And... It looks like " + "some more graves".RichTextWave().RichTextColor(RED_COLOR) + " got dug out somehow...",
                 "HOops: W-Well, maybe we should just try " + "digging them deeper?".RichTextWave().RichTextColor(RED_COLOR),
-                "HSmile: You can move underground by pressing the " + "big green arrow!".RichTextWave().RichTextColor(GREEN_COLOR),
+                "HSmile: You can move underground by pressing the " + " green arrow!".RichTextWave().RichTextColor(GREEN_COLOR),
                 "HPoint: Anyway, " + "I think I'm gonna go now.".RichTextShake() + " Happy undertaking!",
             }
         ),

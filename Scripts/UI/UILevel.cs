@@ -6,10 +6,14 @@ public partial class UILevel : Control
 {
     [ExportCategory("UI")]
     [Export] public UIScoreDisplay ScoreDisplay;
-    [Export] public Button NextLevelButton;
+    [Export] public UIHightlightButton NextLevelButton;
+    [Export] public UIHightlightButton SwitchCemeteryButton;
     [ExportCategory("Game")]
     [Export] private Control CoffinHolder;
     [Export] private Control CemeteryHolder;
+    [ExportCategory("Change cemetery anim")]
+    [Export] private float ChangeCemeteryTime;
+    [Export] private int ChangeCemeteryDist;
     [ExportGroup("Scenes")]
     [Export] private PackedScene SceneUICoffin;
     [Export] private PackedScene SceneUICemetery;
@@ -18,6 +22,9 @@ public partial class UILevel : Control
     [Export] private PackedScene SceneUISingleGrave;
     [Export] private PackedScene SceneUIUndergroundGrave;
     [Export] private PackedScene SceneUIMassGrave;
+
+    private List<UICemetery> cemeteries { get; } = new List<UICemetery>();
+    private int currentCemetery;
 
     public void Init(LevelGeneratorData level, List<AGrave> Graves, List<Coffin> Coffins)
     {
@@ -36,18 +43,31 @@ public partial class UILevel : Control
         List<UndergroundGrave> undergroundGraves = Graves.ConvertAll(a => a is UndergroundGrave grave ? grave : null).FindAll(a => a != null);
         if (undergroundGraves.Count > 0)
         {
-            UICemetery cemetery = InitCemetery<UndergroundGrave>(GraveType.Single);
+            UICemetery cemetery = InitCemetery<UndergroundGrave>(GraveType.Underground);
             FillCemeteryGrid(level, cemetery, GraveType.Underground, undergroundGraves);
         }
         List<MassGrave> massGraves = Graves.ConvertAll(a => a is MassGrave grave ? grave : null).FindAll(a => a != null);
         if (massGraves.Count > 0 && massGraves.Count <= 1)
         {
-            UICemetery cemetery = InitCemetery<MassGrave>(GraveType.Single);
+            UICemetery cemetery = InitCemetery<MassGrave>(GraveType.Mass);
             FillCemetery(cemetery, massGraves[0].Type, massGraves);
         }
         else if (massGraves.Count > 0)
         {
             GD.PushError("[UILevel]: Cannot handle more than 1 mass grave!");
+        }
+        if (cemeteries.Count > 1)
+        {
+            // Assume 0 is overground and 1 is other always...
+            currentCemetery = 0;
+            SwitchCemeteryButton.Rotation = Mathf.Atan2(cemeteries[1].Data.Location.Y, cemeteries[1].Data.Location.X);
+            SwitchCemeteryButton.TransitionIn();
+            SwitchCemeteryButton.Pressed += () =>
+            {
+                SwitchCemeteryButton.Disabled = true;
+                SwitchCemeteryButton.AnimateRotate(Mathf.Pi, () => SwitchCemeteryButton.Disabled = false, Easing.EaseInOutBack);
+                cemeteries[1 - currentCemetery].TransitionIn(cemeteries[currentCemetery], ChangeCemeteryTime, ChangeCemeteryDist, () => currentCemetery = 1 - currentCemetery);
+            };
         }
     }
 
@@ -56,6 +76,7 @@ public partial class UILevel : Control
         UICemetery cemetery = SceneUICemetery.Instantiate<UICemetery>();
         cemetery.Init(CemeteryLoader.GetRandom(a => a.Type == type));
         CemeteryHolder.AddChild(cemetery);
+        cemeteries.Add(cemetery);
         return cemetery;
     }
 
