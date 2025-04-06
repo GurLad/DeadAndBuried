@@ -15,7 +15,7 @@ public partial class PersonLoader : AGameLoader<PersonLoader, PersonData>
     {
         bool isZombie = predicate(ZombieChecker);
         (string Name, Pronoun Pronoun) namePronoun = PossibleNames.RandomItemInList();
-        string formattedInscription = FormatInscription(isZombie ? PossibleNormalInscriptions.RandomItemInList() : PossibleZombieInscriptions.RandomItemInList(), namePronoun.Pronoun);
+        string formattedInscription = FormatInscription(isZombie ? PossibleZombieInscriptions.RandomItemInList() : PossibleNormalInscriptions.RandomItemInList(), namePronoun.Pronoun);
         return new PersonData(
             namePronoun.Name,
             PossibleFamilyNames.RandomItemInList(),

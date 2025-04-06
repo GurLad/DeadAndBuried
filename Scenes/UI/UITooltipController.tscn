@@ -17,18 +17,11 @@ TooltipUpright = NodePath("UITooltipUpright")
 TooltipSideways = NodePath("UITooltipSideways")
 
 [node name="UITooltipUpright" parent="." instance=ExtResource("2_d5y0x")]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -18.5
-offset_right = 52.0
-offset_bottom = 18.5
 
 [node name="UITooltipSideways" parent="." instance=ExtResource("3_d5y0x")]
+visible = false
 layout_mode = 1
 offset_left = -54.0
 offset_top = -16.5

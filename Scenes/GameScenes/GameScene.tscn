@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjrfk3c8pc4o8"]
+[gd_scene load_steps=9 format=3 uid="uid://cjrfk3c8pc4o8"]
 
 [ext_resource type="Script" uid="uid://cdsawhepmu6s7" path="res://Scripts/Logic/Level.cs" id="1_0pjut"]
 [ext_resource type="Script" uid="uid://ddo034v27hm4i" path="res://Scripts/Logic/LevelGenerator.cs" id="2_bh5u1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br3s8f8txxth4" path="res://Scenes/UI/UILevel.tscn" id="4_yxnbd"]
 [ext_resource type="PackedScene" uid="uid://b17qyfvlfoiij" path="res://Scenes/UI/UITooltipController.tscn" id="5_6sljk"]
 [ext_resource type="PackedScene" uid="uid://ce2yqtl8w6ooc" path="res://Scenes/UI/UICursor.tscn" id="5_pk66b"]
+[ext_resource type="PackedScene" uid="uid://u0l6bbf7glxt" path="res://Scenes/UI/UIVFXController.tscn" id="6_6sljk"]
 
 [node name="GameScene" type="Node"]
 
@@ -31,6 +32,9 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="UITooltipController" parent="UI" instance=ExtResource("5_6sljk")]
+layout_mode = 1
+
+[node name="UIVFXController" parent="UI" instance=ExtResource("6_6sljk")]
 layout_mode = 1
 
 [node name="Level" type="Node" parent="." node_paths=PackedStringArray("Generator", "uiLevel", "conversationPlayer")]
