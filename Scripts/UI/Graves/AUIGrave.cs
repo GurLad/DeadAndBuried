@@ -77,7 +77,7 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
 
     private void RenderFilled(Coffin coffin, int score)
     {
-        //UIVFXController.Current.DisplayScore(this, score);
+        UIVFXController.Current.DisplayScore(this, score);
         Render(Grave);
     }
 

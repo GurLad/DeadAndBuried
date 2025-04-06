@@ -7,18 +7,25 @@
 [ext_resource type="FontFile" uid="uid://5orcbu327rix" path="res://Fonts/TomAndJerry.ttf" id="5_1stk3"]
 
 [node name="UIScoreText" type="Label" node_paths=PackedStringArray("DisplayLabel")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -6.5
+offset_right = 14.0
+offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 2
 text = "9999"
 script = ExtResource("1_tc3os")
 DisplayLabel = NodePath(".")
-UpSpeed = 5.0
-DisplayTime = 0.8
+UpSpeed = 13.0
+DisplayTime = 0.7
 FadeTime = 0.2
+OutlineColor = Color(0.203922, 0.192157, 0.156863, 1)
 FontThresolds = Dictionary[int, Font]({
 0: ExtResource("2_b43jb"),
 101: ExtResource("3_fkk6u"),
