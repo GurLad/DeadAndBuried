@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://basjibrv4x3bq" path="res://Sprites/Dialogue/Ref.png" id="2_o8gl0"]
 [ext_resource type="Texture2D" uid="uid://co0lwyquphi28" path="res://Sprites/Dialogue/AssistantTempPoint.png" id="3_n5t5p"]
 [ext_resource type="Texture2D" uid="uid://hslmkp1lbulx" path="res://Sprites/Dialogue/SpeechBubble.png" id="3_ujyie"]
-[ext_resource type="FontFile" uid="uid://bx5jc3lksyknb" path="res://Fonts/Gaiden.ttf" id="4_w71n2"]
+[ext_resource type="FontFile" uid="uid://d1lf6n8cp7jk4" path="res://Fonts/Born2bSportyV2.ttf" id="6_0gjy5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w71n2"]
 texture = ExtResource("3_ujyie")
@@ -27,13 +27,13 @@ portraits = Dictionary[String, Texture2D]({
 "Temp Greet": ExtResource("2_0gjy5"),
 "Temp Point": ExtResource("3_n5t5p")
 })
-showHideTime = 0.7
-showHideDistance = 100.0
-lineJumpTime = 0.3
-lineJumpDistance = 13.0
+showHideTime = 0.4
+showHideDistance = 50.0
+lineJumpTime = 0.15
+lineJumpDistance = -13.0
 portraitHolder = NodePath("PortraitHolder")
 textContainer = NodePath("TextBubbleHolder")
-text = NodePath("")
+text = NodePath("TextBubbleHolder/PanelContainer/Text")
 clickBlocker = NodePath("ClickBlocker")
 
 [node name="ClickBlocker" type="Control" parent="."]
@@ -56,15 +56,14 @@ texture = ExtResource("2_o8gl0")
 
 [node name="TextBubbleHolder" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -176.0
-offset_top = -142.0
-offset_right = 54.0
-offset_bottom = -17.0
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.106
+anchor_right = 0.584
+anchor_bottom = 0.453
+offset_top = -0.160004
+offset_right = 0.23996
+offset_bottom = -0.0800018
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -73,11 +72,10 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_w71n2")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextBubbleHolder/PanelContainer"]
+[node name="Text" type="RichTextLabel" parent="TextBubbleHolder/PanelContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_w71n2")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_fonts/normal_font = ExtResource("6_0gjy5")
 bbcode_enabled = true
 text = "[wave amp=19 freq=6.5 connected=1]Hello World![/wave]"
 horizontal_alignment = 1

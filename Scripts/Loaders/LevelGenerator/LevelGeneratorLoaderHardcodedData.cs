@@ -38,7 +38,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             events: new List<string>()
             {
                 "Temp Greet: Hello world!",
-                "Temp Point: I can say stuff with a |foreboding tone|!"
+                "Temp Point: I can say stuff with a " + "foreboding tone!".RichTextColor("773f35").RichTextWave(),
             }
         ),
         new LevelGeneratorData

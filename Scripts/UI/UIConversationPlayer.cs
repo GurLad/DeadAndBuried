@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class UIConversationPlayer : Control
 {
-    private enum State { Idle, WaitForInput }
+    private enum State { Idle, Animating, WaitForInput }
 
     [Export]
     private Godot.Collections.Dictionary<string, Texture2D> portraits;
@@ -22,7 +22,7 @@ public partial class UIConversationPlayer : Control
     [Export]
     private Control textContainer;
     [Export]
-    private Label text;
+    private RichTextLabel text;
     [Export]
     private Control clickBlocker;
     private Interpolator interpolator = new Interpolator();
@@ -72,7 +72,9 @@ public partial class UIConversationPlayer : Control
         clickBlocker.Visible = true;
         text.Text = "";
         lines = newLines;
-        textContainer.Position = new Vector2(Position.X, lineBaseHeight);
+        textContainer.Position = new Vector2(textContainer.Position.X, lineBaseHeight);
+        NextLine();
+        state = State.Animating;
         interpolator.Interpolate(showHideTime,
             new Interpolator.InterpolateObject(
                 a => Position = new Vector2(Position.X, a),
@@ -84,7 +86,7 @@ public partial class UIConversationPlayer : Control
                 Modulate.A,
                 1,
                 Easing.EaseOutQuad));
-        interpolator.OnFinish = () => NextLine();
+        interpolator.OnFinish = () => state = State.WaitForInput;
     }
 
     public void NextLine()
@@ -98,7 +100,7 @@ public partial class UIConversationPlayer : Control
                 lines.RemoveAt(0);
                 interpolator.Interpolate(lineJumpTime / 2,
                     new Interpolator.InterpolateObject(
-                    a => textContainer.Position = new Vector2(Position.X, a),
+                    a => textContainer.Position = new Vector2(textContainer.Position.X, a),
                     textContainer.Position.Y,
                     lineJumpHeight,
                     Easing.EaseOutQuad));
@@ -106,7 +108,7 @@ public partial class UIConversationPlayer : Control
                 {
                     interpolator.Interpolate(lineJumpTime / 2,
                         new Interpolator.InterpolateObject(
-                        a => textContainer.Position = new Vector2(Position.X, a),
+                        a => textContainer.Position = new Vector2(textContainer.Position.X, a),
                         textContainer.Position.Y,
                         lineBaseHeight,
                         Easing.EaseOutQuad));
@@ -143,7 +145,7 @@ public partial class UIConversationPlayer : Control
     private void HideUI()
     {
         state = State.Idle;
-        textContainer.Position = new Vector2(Position.X, lineBaseHeight);
+        textContainer.Position = new Vector2(textContainer.Position.X, lineBaseHeight);
         interpolator.Interpolate(showHideTime,
             new Interpolator.InterpolateObject(
                 a => Position = new Vector2(Position.X, a),
