@@ -12,8 +12,7 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 8.0
 
-[node name="UITooltipUpright" type="Control" node_paths=PackedStringArray("NamesLabel", "InscriptionLabel")]
-layout_mode = 3
+[node name="UITooltipUpright" type="MarginContainer" node_paths=PackedStringArray("NamesLabel", "InscriptionLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,37 +20,31 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_idho7")
-NamesLabel = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Name")
-InscriptionLabel = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Inscription")
+NamesLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/Name")
+InscriptionLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/Inscription")
 transitionTime = 0.2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_yqnel")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_bottom = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Dr. Andy Dead"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Inscription" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Inscription" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.839216, 0.756863, 0.615686, 1)
@@ -61,7 +54,7 @@ text = "Death claimed him before he could conquer it."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
