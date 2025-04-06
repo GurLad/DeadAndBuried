@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class FadeTransition : ColorRect, ITransition
+public partial class FadeTransition : Control, ITransition
 {
     [Export] private float transitionTime;
 

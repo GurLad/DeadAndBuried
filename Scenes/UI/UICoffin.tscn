@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpq60kah1abt7"]
+[gd_scene load_steps=5 format=3 uid="uid://dpq60kah1abt7"]
 
 [ext_resource type="Script" uid="uid://ryvgvhg38xqt" path="res://Scripts/UI/UICoffin.cs" id="1_vk31p"]
 [ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="2_4e58g"]
 [ext_resource type="Texture2D" uid="uid://cpvddho8tw86c" path="res://Sprites/Coffins/Coffin1.png" id="3_sbsvi"]
+[ext_resource type="PackedScene" uid="uid://b1cqm8rbqrih0" path="res://Scenes/UI/UITooltipUpright.tscn" id="4_o1awl"]
 
-[node name="UICoffin" type="MarginContainer" node_paths=PackedStringArray("Icon")]
+[node name="UICoffin" type="MarginContainer" node_paths=PackedStringArray("Icon", "Tooltip")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,8 +15,12 @@ script = ExtResource("1_vk31p")
 Icon = NodePath("Icon")
 BaseModulate = Color(1, 1, 1, 1)
 HoverOutline = Color(1, 1, 1, 1)
+Tooltip = NodePath("UITooltipUpright")
 
 [node name="Icon" type="TextureRect" parent="."]
 material = ExtResource("2_4e58g")
 layout_mode = 2
 texture = ExtResource("3_sbsvi")
+
+[node name="UITooltipUpright" parent="." instance=ExtResource("4_o1awl")]
+layout_mode = 2

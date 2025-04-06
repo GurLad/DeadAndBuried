@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class AUIGrave : Control {}
+public abstract partial class AUIGrave : AUICoffinGrave {}
 
 public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveClass : AGrave
 {
@@ -22,6 +22,8 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
 
     public GraveClass Grave { get; private set; }
 
+    protected override PersonData GetPersonData => Grave?.Data?.PersonData;
+
     private HighlightMode Highlight;
     private ShaderMaterial ShaderMaterial;
 
@@ -33,8 +35,6 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         UICursor.Current.OnPickedUpCoffin += CursorPickedUpCoffin;
         UICursor.Current.OnDroppedCoffin += CursorDroppedCoffin;
         UICursor.Current.OnCancelledCoffin += CursorDroppedCoffin;
-        MouseEntered += OnMouseEntered;
-        MouseExited += OnMouseExited;
         Icon.Material = (Material)Icon.Material.Duplicate();
         ShaderMaterial = Icon.Material is ShaderMaterial sm ? sm : null;
         if (ShaderMaterial == null)
@@ -96,8 +96,9 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         RenderHighlight();
     }
 
-    private void OnMouseEntered()
+    protected override void OnMouseEntered()
     {
+        base.OnMouseEntered();
         if (UICursor.Current.HeldCoffin != null && Grave.CanFill(UICursor.Current.HeldCoffin))
         {
             Highlight |= HighlightMode.Hover;
@@ -105,8 +106,9 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         }
     }
 
-    private void OnMouseExited()
+    protected override void OnMouseExited()
     {
+        base.OnMouseExited();
         Highlight &= ~HighlightMode.Hover;
         RenderHighlight();
     }

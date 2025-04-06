@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class UICoffin : Control
+public partial class UICoffin : AUICoffinGrave
 {
     private enum HighlightMode
     {
@@ -19,6 +19,8 @@ public partial class UICoffin : Control
 
     public Coffin Coffin { get; private set; }
 
+    protected override PersonData GetPersonData => Coffin?.Data?.PersonData;
+
     private HighlightMode Highlight;
     private ShaderMaterial ShaderMaterial;
 
@@ -29,8 +31,6 @@ public partial class UICoffin : Control
     {
         Coffin = coffin;
         AddChild(Coffin);
-        MouseEntered += OnMouseEntered;
-        MouseExited += OnMouseExited;
         Icon.Material = (Material)Icon.Material.Duplicate();
         ShaderMaterial = Icon.Material is ShaderMaterial sm ? sm : null;
         if (ShaderMaterial == null)
@@ -78,14 +78,16 @@ public partial class UICoffin : Control
         ShaderMaterial.SetShaderParameter("showOutline", (Highlight & HighlightMode.Hover) != HighlightMode.None && UICursor.Current.HeldCoffin == null);
     }
 
-    private void OnMouseEntered()
+    protected override void OnMouseEntered()
     {
+        base.OnMouseEntered();
         Highlight |= HighlightMode.Hover;
         RenderHighlight();
     }
 
-    private void OnMouseExited()
+    protected override void OnMouseExited()
     {
+        base.OnMouseExited();
         Highlight &= ~HighlightMode.Hover;
         RenderHighlight();
     }
