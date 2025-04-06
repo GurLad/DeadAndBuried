@@ -36,7 +36,7 @@ public partial class UICemetery : Control
     {
         Visible = true;
         GravesHolder.Visible = false;
-        ZIndex = previous.ZIndex + 1;
+        previous.ZIndex = ZIndex - 1;
         Vector2I basePos = (previous.Data.Location - Data.Location) * dist;
         Interpolator.Interpolate(time,
             new Interpolator.InterpolateObject(

@@ -29,7 +29,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_ulkda")
-transitionTime = 1.0
 
 [node name="MusicController" type="AudioStreamPlayer" parent="."]
 script = ExtResource("5_m2gdr")

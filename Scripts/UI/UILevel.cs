@@ -69,6 +69,10 @@ public partial class UILevel : Control
                 cemeteries[1 - currentCemetery].TransitionIn(cemeteries[currentCemetery], ChangeCemeteryTime, ChangeCemeteryDist, () => currentCemetery = 1 - currentCemetery);
             };
         }
+        else
+        {
+            SwitchCemeteryButton.FakeHide();
+        }
     }
 
     private UICemetery InitCemetery<GraveClass>(GraveType type) where GraveClass : AGrave

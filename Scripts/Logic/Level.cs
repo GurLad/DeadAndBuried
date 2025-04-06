@@ -23,7 +23,7 @@ public partial class Level : Node
         ConversationPlayer.BeginConversation(level.Events);
         Graves.ForEach(a => a.OnFilled += OnGraveFilled);
         UILevel.ScoreDisplay.SetScore(SaveData.Score, false);
-        UILevel.NextLevelButton.Disabled = true;
+        UILevel.NextLevelButton.FakeHide();
         MusicController.Play("Levels" + (SaveData.CurrentLevel > 2 ? "2" : "1"));
     }
 
@@ -34,7 +34,7 @@ public partial class Level : Node
         Coffins.Remove(coffin);
         if (Coffins.Count <= 0)
         {
-            UILevel.NextLevelButton.Disabled = false;
+            UILevel.NextLevelButton.TransitionIn();
             UILevel.NextLevelButton.Pressed += FinishLevel;
         }
     }

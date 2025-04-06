@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://br3s8f8txxth4"]
+[gd_scene load_steps=18 format=3 uid="uid://br3s8f8txxth4"]
 
 [ext_resource type="Script" uid="uid://mdb26rwfba6t" path="res://Scripts/UI/UILevel.cs" id="1_r432v"]
 [ext_resource type="PackedScene" uid="uid://dpq60kah1abt7" path="res://Scenes/UI/UICoffin.tscn" id="2_h6fhm"]
@@ -12,6 +12,10 @@
 [ext_resource type="FontFile" uid="uid://b4d6lvfaihdaa" path="res://Fonts/VCRFont.ttf" id="10_lk7ll"]
 [ext_resource type="FontFile" uid="uid://5orcbu327rix" path="res://Fonts/TomAndJerry.ttf" id="11_wi73h"]
 [ext_resource type="Script" uid="uid://di85w3dldng3o" path="res://Scripts/UI/UIScoreDisplay.cs" id="12_sknw8"]
+[ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="13_nl3pf"]
+[ext_resource type="Texture2D" uid="uid://dulknkgvno5cr" path="res://Sprites/UI/NextButton.png" id="13_sknw8"]
+[ext_resource type="Script" uid="uid://dpk02bsmewdan" path="res://Scripts/UI/UIHightlightButton.cs" id="14_5e6dj"]
+[ext_resource type="Texture2D" uid="uid://dwbw0cgnmkgn7" path="res://Sprites/UI/MoveScreen.png" id="15_nl3pf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7odr5"]
 texture = ExtResource("8_7odr5")
@@ -20,7 +24,7 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
-[node name="UILevel" type="Control" node_paths=PackedStringArray("ScoreDisplay", "NextLevelButton", "CoffinHolder", "CemeteryHolder")]
+[node name="UILevel" type="Control" node_paths=PackedStringArray("ScoreDisplay", "NextLevelButton", "SwitchCemeteryButton", "CoffinHolder", "CemeteryHolder")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,8 +35,11 @@ mouse_filter = 2
 script = ExtResource("1_r432v")
 ScoreDisplay = NodePath("VBoxContainer/ScoreContent")
 NextLevelButton = NodePath("VBoxContainer/NextLevel")
+SwitchCemeteryButton = NodePath("VBoxContainer/NextCemetery")
 CoffinHolder = NodePath("CenterContainer/MarginContainer/ScrollContainer/CoffinsHolder")
 CemeteryHolder = NodePath("CemeteryHolder")
+ChangeCemeteryTime = 0.4
+ChangeCemeteryDist = 100
 SceneUICoffin = ExtResource("2_h6fhm")
 SceneUICemetery = ExtResource("3_7odr5")
 SceneUIFakeGrave = ExtResource("4_lk7ll")
@@ -85,17 +92,23 @@ vertical_scroll_mode = 3
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(77, 0)
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 11
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = -20.0
-offset_bottom = 20.0
+anchor_bottom = 1.0
+offset_left = -73.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="MarginTop" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ExpandTop" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -115,6 +128,24 @@ horizontal_alignment = 1
 script = ExtResource("12_sknw8")
 DisplayTime = 0.2
 
-[node name="NextLevel" type="Button" parent="VBoxContainer"]
+[node name="NextLevel" type="TextureButton" parent="VBoxContainer"]
+material = ExtResource("13_nl3pf")
 layout_mode = 2
-text = "Next Level"
+texture_normal = ExtResource("13_sknw8")
+stretch_mode = 5
+script = ExtResource("14_5e6dj")
+
+[node name="ExpandBottom" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NextCemetery" type="TextureButton" parent="VBoxContainer"]
+material = ExtResource("13_nl3pf")
+layout_mode = 2
+texture_normal = ExtResource("15_nl3pf")
+stretch_mode = 5
+script = ExtResource("14_5e6dj")
+
+[node name="MarginBottom" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2

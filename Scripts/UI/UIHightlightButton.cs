@@ -29,13 +29,18 @@ public partial class UIHightlightButton : BaseButton
         ShaderMaterial.SetShaderParameter("showOutline", false);
     }
 
+    public void FakeHide()
+    {
+        ShaderMaterial.SetShaderParameter("modulate",new Color(Modulate, 0));
+    }
+
     public void TransitionIn(Action midTransition = null)
     {
         Visible = true;
         MouseFilter = MouseFilterEnum.Stop;
-        Modulate = new Color(Modulate, 0);
+        ShaderMaterial.SetShaderParameter("modulate",new Color(Modulate, 0));
         Interpolator.Interpolate(transitionTime, new Interpolator.InterpolateObject(
-            a => Modulate = new Color(Modulate, a),
+            a => ShaderMaterial.SetShaderParameter("modulate",new Color(Modulate, a)),
             0,
             1));
         Interpolator.OnFinish = midTransition;
@@ -43,9 +48,9 @@ public partial class UIHightlightButton : BaseButton
 
     public void TransitionOut(Action postTransition = null)
     {
-        Modulate = new Color(Modulate, 1);
+        ShaderMaterial.SetShaderParameter("modulate",new Color(Modulate, 1));
         Interpolator.Interpolate(transitionTime, new Interpolator.InterpolateObject(
-            a => Modulate = new Color(Modulate, a),
+            a => ShaderMaterial.SetShaderParameter("modulate",new Color(Modulate, a)),
             1,
             0));
         Interpolator.OnFinish = () =>
