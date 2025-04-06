@@ -181,7 +181,7 @@ public static class ExtensionMethods
         return string.Format("[wave amp={0} freq={1} connected={2}]{3}[/wave]", amp, freq, connected ? 1 : 0, source);
     }
 
-    public static string RichTextShake(this string source, float rate = 20, float level = 5.0f, bool connected = true)
+    public static string RichTextShake(this string source, float rate = 16, float level = 6.0f, bool connected = true)
     {
         return string.Format("[shake rate={0} level={1} connected={2}]{3}[/shake]", rate, level, connected ? 1 : 0, source);
     }

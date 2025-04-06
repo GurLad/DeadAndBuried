@@ -15,6 +15,9 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
         { GraveType.Spaceship, 50 },
     };
 
+    private static readonly string RED_COLOR = "773f35";
+    private static readonly string GREEN_COLOR = "#a39e55";
+
     protected static List<LevelGeneratorData> Levels { get; } = new List<LevelGeneratorData>()
     {
         new LevelGeneratorData
@@ -37,8 +40,12 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "Temp Greet: Hello world!",
-                "Temp Point: I can say stuff with a " + "foreboding tone!".RichTextColor("773f35").RichTextWave(),
+                "BWave: " + "HIIIIIIIIIIIII!".RichTextWave() + " Welcome to your new " + "cemetery!".RichTextColor(RED_COLOR).RichTextWave(),
+                "BPoint: My name is " + "TBA!".RichTextColor(RED_COLOR).RichTextWave() + " I'll help you run this place!",
+                "BSmile: All you have to do is bury the dead. Simply drag their coffins from the " + "left side of the screen...".RichTextWave().RichTextColor(RED_COLOR),
+                "BWave: To " + "anywhere you want".RichTextWave().RichTextColor(RED_COLOR) + " in the middle! This is your cemetary, after all!",
+                "BThink: Oh, but don't forget, " + "family members usually want to be buried together.".RichTextWave().RichTextColor(RED_COLOR),
+                "BPoint: That's all from me! Have an " + "amazing night!".RichTextWave(),
             }
         ),
         new LevelGeneratorData

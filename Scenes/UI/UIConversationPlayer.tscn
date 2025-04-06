@@ -1,18 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr08u3rm4v7u0"]
+[gd_scene load_steps=22 format=3 uid="uid://dr08u3rm4v7u0"]
 
 [ext_resource type="Script" uid="uid://bv7hex2kcbvcc" path="res://Scripts/UI/UIConversationPlayer.cs" id="1_1lckj"]
 [ext_resource type="Texture2D" uid="uid://bi4llusisd55" path="res://Sprites/Dialogue/AssistantTempGreet.png" id="2_0gjy5"]
-[ext_resource type="Texture2D" uid="uid://basjibrv4x3bq" path="res://Sprites/Dialogue/Ref.png" id="2_o8gl0"]
 [ext_resource type="Texture2D" uid="uid://co0lwyquphi28" path="res://Sprites/Dialogue/AssistantTempPoint.png" id="3_n5t5p"]
 [ext_resource type="Texture2D" uid="uid://hslmkp1lbulx" path="res://Sprites/Dialogue/SpeechBubble.png" id="3_ujyie"]
+[ext_resource type="Texture2D" uid="uid://c2ap21im6k8ga" path="res://Sprites/Dialogue/Assistant2Wave.png" id="4_0gjy5"]
+[ext_resource type="Texture2D" uid="uid://c656qrd4f6vkp" path="res://Sprites/Dialogue/Assistant2Think2.png" id="5_u5m1w"]
 [ext_resource type="FontFile" uid="uid://d1lf6n8cp7jk4" path="res://Fonts/Born2bSportyV2.ttf" id="6_0gjy5"]
+[ext_resource type="Texture2D" uid="uid://bourmyjt3icaw" path="res://Sprites/Dialogue/Assistant2Smile.png" id="6_57ib2"]
+[ext_resource type="Texture2D" uid="uid://pgsjpy2o1efw" path="res://Sprites/Dialogue/Assistant2Point.png" id="7_wajc7"]
+[ext_resource type="Texture2D" uid="uid://dbo4pnyaeucw3" path="res://Sprites/Dialogue/Assistant2Oops.png" id="8_av1k7"]
+[ext_resource type="Texture2D" uid="uid://dnk1sx8bns1fu" path="res://Sprites/Dialogue/Assistant2HalfZombieWave.png" id="9_fwn4j"]
+[ext_resource type="Texture2D" uid="uid://dtvu3rpdyekg3" path="res://Sprites/Dialogue/Assistant2HalfZombieThink2.png" id="10_arfjw"]
+[ext_resource type="Texture2D" uid="uid://bb3sn76ck647t" path="res://Sprites/Dialogue/Assistant2HalfZombieSmile.png" id="11_gfaq7"]
+[ext_resource type="Texture2D" uid="uid://bt1ijem8yejh" path="res://Sprites/Dialogue/Assistant2HalfZombiePoint.png" id="12_aeivm"]
+[ext_resource type="Texture2D" uid="uid://ddsf1ci7nwy1b" path="res://Sprites/Dialogue/Assistant2HalfZombieOops.png" id="13_np7cq"]
+[ext_resource type="Texture2D" uid="uid://d38tt0jh8mncb" path="res://Sprites/Dialogue/Assistant2ZombieWave.png" id="14_x8lr5"]
+[ext_resource type="Texture2D" uid="uid://bnhkrgbvoovi8" path="res://Sprites/Dialogue/Assistant2ZombieThink2.png" id="15_v0ywf"]
+[ext_resource type="Texture2D" uid="uid://cd5u4l86gey7y" path="res://Sprites/Dialogue/Assistant2ZombieSmile.png" id="16_acjp4"]
+[ext_resource type="Texture2D" uid="uid://d3dvyifahqfva" path="res://Sprites/Dialogue/Assistant2ZombiePoint.png" id="17_c42o4"]
+[ext_resource type="Texture2D" uid="uid://dfn4d1idjjr6j" path="res://Sprites/Dialogue/Assistant2ZombieOops.png" id="18_bif3a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w71n2"]
 texture = ExtResource("3_ujyie")
-texture_margin_left = 26.0
-texture_margin_top = 26.0
-texture_margin_right = 36.0
-texture_margin_bottom = 36.0
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 34.0
+texture_margin_bottom = 34.0
 
 [node name="UIConversationPlayer" type="Control" node_paths=PackedStringArray("portraitHolder", "textContainer", "text", "clickBlocker")]
 layout_mode = 3
@@ -24,8 +38,23 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_1lckj")
 portraits = Dictionary[String, Texture2D]({
+"BOops": ExtResource("8_av1k7"),
+"BPoint": ExtResource("7_wajc7"),
+"BSmile": ExtResource("6_57ib2"),
+"BThink": ExtResource("5_u5m1w"),
+"BWave": ExtResource("4_0gjy5"),
+"HOops": ExtResource("13_np7cq"),
+"HPoint": ExtResource("12_aeivm"),
+"HSmile": ExtResource("11_gfaq7"),
+"HThink": ExtResource("10_arfjw"),
+"HWave": ExtResource("9_fwn4j"),
 "Temp Greet": ExtResource("2_0gjy5"),
-"Temp Point": ExtResource("3_n5t5p")
+"Temp Point": ExtResource("3_n5t5p"),
+"ZOops": ExtResource("18_bif3a"),
+"ZPoint": ExtResource("17_c42o4"),
+"ZSmile": ExtResource("16_acjp4"),
+"ZThink": ExtResource("15_v0ywf"),
+"ZWave": ExtResource("14_x8lr5")
 })
 showHideTime = 0.4
 showHideDistance = 50.0
@@ -52,18 +81,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_o8gl0")
+texture = ExtResource("4_0gjy5")
 
 [node name="TextBubbleHolder" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.225
-anchor_top = 0.106
-anchor_right = 0.584
-anchor_bottom = 0.453
-offset_top = -0.160004
-offset_right = 0.23996
-offset_bottom = -0.0800018
+anchor_left = 0.247
+anchor_top = 0.011
+anchor_right = 0.606
+anchor_bottom = 0.358
+offset_left = -0.0800018
+offset_top = 0.0399997
+offset_right = 0.159973
+offset_bottom = 0.119995
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -77,6 +107,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_0gjy5")
 bbcode_enabled = true
-text = "[wave amp=19 freq=6.5 connected=1]Hello World![/wave]"
+text = "[wave amp=19 freq=6.5 connected=1]Hello World![/wave]
+[shake rate=16 level=6 connected=1]Shaking in my boots![/shake]"
 horizontal_alignment = 1
 vertical_alignment = 1
