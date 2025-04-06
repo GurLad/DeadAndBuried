@@ -39,6 +39,7 @@ project/assembly_name="DeadAndBuried"
 [file_customization]
 
 folder_colors={
+"res://Fonts/": "teal",
 "res://Scenes/": "blue",
 "res://Scenes/GameScenes/": "purple",
 "res://Scenes/Loaders/": "pink",
@@ -54,5 +55,19 @@ folder_colors={
 "res://Sprites/Backgrounds/": "orange",
 "res://Sprites/Coffins/": "yellow",
 "res://Sprites/Dialogue/": "green",
-"res://Sprites/Tombs/": "teal"
+"res://Sprites/Tombs/": "teal",
+"res://Themes/": "orange"
 }
+
+[gui]
+
+theme/custom="uid://dud5q6q24a4g4"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
+
+[rendering]
+
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

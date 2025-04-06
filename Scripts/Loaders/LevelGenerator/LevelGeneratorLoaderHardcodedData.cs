@@ -37,8 +37,8 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             assistantType: "1",
             events: new List<string>()
             {
-                "Temp Greet: Test",
-                "Temp Point: Another test!"
+                "Temp Greet: Hello world!",
+                "Temp Point: I can say stuff with a |foreboding tone|!"
             }
         ),
         new LevelGeneratorData

@@ -6,3 +6,4 @@
 shader = ExtResource("1_lea31")
 shader_parameter/outlineColor = Color(1, 1, 1, 1)
 shader_parameter/showOutline = false
+shader_parameter/modulate = Color(1, 1, 1, 1)
