@@ -56,8 +56,8 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
 
     private void Render(GraveClass grave)
     {
-        GraveType type = grave.Data.IsEmpty ? grave.Type : (grave.Type | GraveType.Filled);
-        int iconID = grave.Data.IsEmpty ? GraveIconLoader.GetRandom(a => a.Type == type).IconID : grave.Data.FilledIconID;
+        GraveType type = grave.IsEmptyCountAttached ? grave.Type : (grave.Type | GraveType.Filled);
+        int iconID = grave.IsEmptyCountAttached ? GraveIconLoader.GetRandom(a => a.Type == type).IconID : grave.Data.FilledIconID;
         if (iconID >= 0)
         {
             Icon.Texture = GraveIconLoader.IconIDToTexture(type, iconID);
