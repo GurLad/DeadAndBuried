@@ -47,11 +47,13 @@ vertical_alignment = 1
 [node name="Inscription" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.839216, 0.756863, 0.615686, 1)
 theme_override_fonts/font = ExtResource("2_idho7")
 theme_override_font_sizes/font_size = 5
 text = "Death claimed him before he could conquer it."
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]

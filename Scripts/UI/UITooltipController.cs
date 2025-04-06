@@ -18,10 +18,10 @@ public partial class UITooltipController : Node
     public void ShowTooltip(Control source, PersonData personData, bool upright)
     {
         UITooltip tooltip = upright ? TooltipUpright : TooltipSideways;
-        tooltip.GlobalPosition = source.GlobalPosition - source.Size / 2 +
+        tooltip.GlobalPosition = source.GlobalPosition + tooltip.Size / 2 - source.Size -
             (upright ?
-                source.Size.X * Vector2.Right / 4 :
-                source.Size.Y * Vector2.Up / 4);
+                tooltip.Size.X * Vector2.Right / 2 :
+                tooltip.Size.Y * Vector2.Up / 2);
         tooltip.ShowTooltip(personData, delay);
     }
 

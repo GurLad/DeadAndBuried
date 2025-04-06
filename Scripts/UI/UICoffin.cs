@@ -80,6 +80,10 @@ public partial class UICoffin : AUICoffinGrave
 
     protected override void OnMouseEntered()
     {
+        if (UICursor.Current.HeldCoffin != null)
+        {
+            return;
+        }
         base.OnMouseEntered();
         Highlight |= HighlightMode.Hover;
         RenderHighlight();
