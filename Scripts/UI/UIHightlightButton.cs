@@ -4,7 +4,7 @@ using System;
 public partial class UIHightlightButton : BaseButton
 {
     [Export] private float transitionTime = 0.3f;
-    [Export] private float rotateTime = 1;
+    [Export] private float rotateTime = 0.4f;
 
     private Interpolator Interpolator = new Interpolator();
     private ShaderMaterial ShaderMaterial;
@@ -17,10 +17,16 @@ public partial class UIHightlightButton : BaseButton
         ShaderMaterial = Material is ShaderMaterial sm ? sm : null;
         MouseEntered += OnMouseEntered;
         MouseExited += OnMouseExited;
+        PivotOffset = Size / 2 + Vector2.Right * (Size.X / 2 + 5f); // wtf
     }
 
     protected virtual void OnMouseEntered()
     {
+        var color = ShaderMaterial.GetShaderParameter("modulate").As<Color>();
+        if (color.A < 1)
+        {
+            return;
+        }
         ShaderMaterial.SetShaderParameter("showOutline", true);
     }
 
@@ -65,15 +71,14 @@ public partial class UIHightlightButton : BaseButton
     {
         Modulate = new Color(Modulate, 1);
         float currRot = Rotation;
-        Interpolator.Interpolate(transitionTime, new Interpolator.InterpolateObject(
+        Interpolator.Interpolate(rotateTime, new Interpolator.InterpolateObject(
             a => Rotation = a,
             currRot,
             currRot + target,
             easing));
         Interpolator.OnFinish = () =>
         {
-            MouseFilter = MouseFilterEnum.Ignore;
-            Visible = false;
+            Rotation = currRot + target;
             postTransition?.Invoke();
         };
     }

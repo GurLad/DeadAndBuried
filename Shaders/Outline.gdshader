@@ -12,7 +12,7 @@ void fragment() {
 	COLOR = texture(TEXTURE, UV) * modulate; //read from texture
 	if (COLOR.a < 0.1 && showOutline)
 	{
-		COLOR.rgb = outlineColor;
+		COLOR.rgb = outlineColor * vec3(modulate.r, modulate.g, modulate.b);
 		vec4 check = texture(TEXTURE, UV + vec2(TEXTURE_PIXEL_SIZE.x, 0));
 		vec4 check2 = texture(TEXTURE, UV + vec2(0, TEXTURE_PIXEL_SIZE.y));
 		vec4 check3 = texture(TEXTURE, UV - vec2(TEXTURE_PIXEL_SIZE.x, 0));
