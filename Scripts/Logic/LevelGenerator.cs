@@ -21,12 +21,12 @@ public partial class LevelGenerator : Node
                         continue;
                     }
                     SingleGrave newGrave = new SingleGrave();
-                    if (saveData.Graves.SafeGet(index.Serializable())?.PersonData != null)
+                    if (saveData.Graves.SafeGet(index)?.PersonData != null)
                     {
                         GD.Print("lasdasdd");
                     }
-                    newGrave.Data.PersonData = saveData.Graves.SafeGet(index.Serializable())?.PersonData;
-                    newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index.Serializable())?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
+                    newGrave.Data.PersonData = saveData.Graves.SafeGet(index)?.PersonData;
+                    newGrave.Data.FilledIconID = saveData.Graves.SafeGet(index)?.FilledIconID ?? GraveIconLoader.GetRandom(a => a.Type == (GraveType.Single | GraveType.Filled)).IconID;
                     newGrave.Data.CompatibleTypes = level.GraveCompatibleTypes[GraveType.Single];
                     newGrave.Data.ScoreMultiplier = level.GraveScoreMultipliers[GraveType.Single];
                     newGrave.Pos = index;
