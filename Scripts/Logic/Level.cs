@@ -7,8 +7,8 @@ public partial class Level : Node
     private static SaveData SaveData { get; } = new SaveData();
 
     [Export] private LevelGenerator Generator;
-    [Export] private UILevel uiLevel;
-    [Export] private UIConversationPlayer conversationPlayer;
+    [Export] private UILevel UILevel;
+    [Export] public UIConversationPlayer ConversationPlayer;
 
     private List<AGrave> Graves;
     private List<Coffin> Coffins;
@@ -19,7 +19,29 @@ public partial class Level : Node
         LevelGeneratorData level = LevelGeneratorLoader.GetRandom(a => a.ID == SaveData.CurrentLevel);
         Coffins = Generator.GenerateCoffins(level);
         Graves = Generator.GenerateGraves(level, SaveData);
-        uiLevel.Init(level, Graves, Coffins);
-        conversationPlayer.BeginConversation(level.Events);
+        UILevel.Init(level, Graves, Coffins);
+        ConversationPlayer.BeginConversation(level.Events);
+        Graves.ForEach(a => a.OnFilled += OnGraveFilled);
+        UILevel.ScoreDisplay.SetScore(SaveData.Score, false);
+        UILevel.NextLevelButton.Disabled = true;
+    }
+
+    private void OnGraveFilled(AGrave grave, Coffin coffin, int score)
+    {
+        SaveData.Score += score;
+        UILevel.ScoreDisplay.SetScore(SaveData.Score);
+        Coffins.Remove(coffin);
+        if (Coffins.Count <= 0)
+        {
+            UILevel.NextLevelButton.Disabled = false;
+            UILevel.NextLevelButton.Pressed += FinishLevel;
+        }
+    }
+
+    private void FinishLevel()
+    {
+        Graves.ConvertAll(a => a is SingleGrave grave ? grave : null).FindAll(a => a != null).ForEach(a => SaveData.Graves.AddOrSet(a.Pos.Serializable(), a.Data));
+        SaveData.CurrentLevel++;
+        SceneController.Current.TransitionToScene("LevelIntro");
     }
 }

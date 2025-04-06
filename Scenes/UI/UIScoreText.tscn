@@ -34,6 +34,6 @@ FontThresolds = Dictionary[int, Font]({
 })
 ColorThresolds = Dictionary[int, Color]({
 0: Color(0.737255, 0.6, 0.470588, 1),
-501: Color(1, 1, 1, 1),
-1001: Color(0.792157, 0.709804, 0.403922, 1)
+501: Color(0.968627, 0.941176, 0.866667, 1),
+1001: Color(1, 1, 1, 1)
 })

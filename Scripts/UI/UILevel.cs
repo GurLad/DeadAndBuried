@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public partial class UILevel : Control
 {
+    [ExportCategory("UI")]
+    [Export] public UIScoreDisplay ScoreDisplay;
+    [Export] public Button NextLevelButton;
+    [ExportCategory("Game")]
     [Export] private Control CoffinHolder;
     [Export] private Control CemeteryHolder;
     [ExportGroup("Scenes")]

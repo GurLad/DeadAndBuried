@@ -37,11 +37,11 @@ layout_mode = 1
 [node name="UIVFXController" parent="UI" instance=ExtResource("6_6sljk")]
 layout_mode = 1
 
-[node name="Level" type="Node" parent="." node_paths=PackedStringArray("Generator", "uiLevel", "conversationPlayer")]
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("Generator", "UILevel", "ConversationPlayer")]
 script = ExtResource("1_0pjut")
 Generator = NodePath("LevelGenerator")
-uiLevel = NodePath("../UI/UILevel")
-conversationPlayer = NodePath("../UI/UIConversationPlayer")
+UILevel = NodePath("../UI/UILevel")
+ConversationPlayer = NodePath("../UI/UIConversationPlayer")
 
 [node name="LevelGenerator" type="Node" parent="Level"]
 script = ExtResource("2_bh5u1")

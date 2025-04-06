@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br3s8f8txxth4"]
+[gd_scene load_steps=14 format=3 uid="uid://br3s8f8txxth4"]
 
 [ext_resource type="Script" uid="uid://mdb26rwfba6t" path="res://Scripts/UI/UILevel.cs" id="1_r432v"]
 [ext_resource type="PackedScene" uid="uid://dpq60kah1abt7" path="res://Scenes/UI/UICoffin.tscn" id="2_h6fhm"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://4vgdtsf62fkw" path="res://Scenes/UI/Graves/UIMassGrave.tscn" id="6_wcjm8"]
 [ext_resource type="Texture2D" uid="uid://boir18nl530qf" path="res://Sprites/Backgrounds/UIOverlay.png" id="7_h6fhm"]
 [ext_resource type="Texture2D" uid="uid://snhtsnokgwv2" path="res://Sprites/UI/CoffinHolder.png" id="8_7odr5"]
+[ext_resource type="FontFile" uid="uid://b4d6lvfaihdaa" path="res://Fonts/VCRFont.ttf" id="10_lk7ll"]
+[ext_resource type="FontFile" uid="uid://5orcbu327rix" path="res://Fonts/TomAndJerry.ttf" id="11_wi73h"]
+[ext_resource type="Script" uid="uid://di85w3dldng3o" path="res://Scripts/UI/UIScoreDisplay.cs" id="12_sknw8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7odr5"]
 texture = ExtResource("8_7odr5")
@@ -17,7 +20,7 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
-[node name="UILevel" type="Control" node_paths=PackedStringArray("CoffinHolder", "CemeteryHolder")]
+[node name="UILevel" type="Control" node_paths=PackedStringArray("ScoreDisplay", "NextLevelButton", "CoffinHolder", "CemeteryHolder")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +29,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_r432v")
+ScoreDisplay = NodePath("VBoxContainer/ScoreContent")
+NextLevelButton = NodePath("VBoxContainer/NextLevel")
 CoffinHolder = NodePath("CenterContainer/MarginContainer/ScrollContainer/CoffinsHolder")
 CemeteryHolder = NodePath("CemeteryHolder")
 SceneUICoffin = ExtResource("2_h6fhm")
@@ -78,3 +83,38 @@ vertical_scroll_mode = 3
 
 [node name="CoffinsHolder" type="VBoxContainer" parent="CenterContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.203922, 0.192157, 0.156863, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_lk7ll")
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="ScoreContent" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.203922, 0.192157, 0.156863, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_wi73h")
+text = "987654"
+horizontal_alignment = 1
+script = ExtResource("12_sknw8")
+DisplayTime = 0.2
+
+[node name="NextLevel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
