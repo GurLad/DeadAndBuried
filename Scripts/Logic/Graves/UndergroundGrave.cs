@@ -6,6 +6,8 @@ public partial class UndergroundGrave : AGrave
     public override GraveType Type => GraveType.Underground;
     public SingleGrave OvergroundGrave;
 
+    public override bool IsEmptyCountAttached => OvergroundGrave.Data.IsEmpty && Data.IsEmpty;
+
     public override bool CanFill(Coffin coffin)
     {
         return OvergroundGrave.Data.IsEmpty && Data.IsEmpty && Data.IsCompatible(coffin.Data);

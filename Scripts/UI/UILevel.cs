@@ -24,6 +24,7 @@ public partial class UILevel : Control
     [Export] private PackedScene SceneUIMassGrave;
 
     private List<UICemetery> cemeteries { get; } = new List<UICemetery>();
+    private List<AUIGrave> uiGraves { get; } = new List<AUIGrave>();
     private int currentCemetery;
 
     public void Init(LevelGeneratorData level, List<AGrave> Graves, List<Coffin> Coffins)
@@ -64,6 +65,7 @@ public partial class UILevel : Control
             SwitchCemeteryButton.TransitionIn();
             SwitchCemeteryButton.Pressed += () =>
             {
+                uiGraves.ForEach(a => a.Render());
                 SwitchCemeteryButton.Disabled = true;
                 SwitchCemeteryButton.AnimateRotate(Mathf.Pi, () => SwitchCemeteryButton.Disabled = false, Easing.EaseInOutBack);
                 cemeteries[1 - currentCemetery].TransitionIn(cemeteries[currentCemetery], ChangeCemeteryTime, ChangeCemeteryDist, () => currentCemetery = 1 - currentCemetery);
@@ -131,6 +133,7 @@ public partial class UILevel : Control
                 break;
         }
         cemetery.AddGrave(uiGrave);
+        uiGraves.Add(uiGrave);
     }
 
     private UIGraveClass CreateAndInitUIGrave<GraveClass, UIGraveClass>(GraveClass grave) where GraveClass : AGrave where UIGraveClass : AUIGraveTyped<GraveClass>

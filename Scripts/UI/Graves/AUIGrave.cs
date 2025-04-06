@@ -1,7 +1,10 @@
 using Godot;
 using System;
 
-public abstract partial class AUIGrave : AUICoffinGrave {}
+public abstract partial class AUIGrave : AUICoffinGrave
+{
+    public abstract void Render();
+}
 
 public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveClass : AGrave
 {
@@ -49,6 +52,8 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         Render(Grave);
     }
 
+    public override void Render() => Render(Grave);
+
     private void Render(GraveClass grave)
     {
         GraveType type = grave.Data.IsEmpty ? grave.Type : (grave.Type | GraveType.Filled);
@@ -60,6 +65,14 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         else
         {
             GD.PushError("[AUIGrave]: No icon for " + type + "!");
+        }
+        if (grave.IsEmptyCountAttached)
+        {
+            Highlight |= HighlightMode.Empty;
+        }
+        else
+        {
+            Highlight &= ~HighlightMode.Empty;
         }
         RenderHighlight();
     }
@@ -136,8 +149,8 @@ public abstract partial class AUIGraveTyped<GraveClass> : AUIGrave where GraveCl
         {
             if (cursor.HeldCoffin != null && Grave.CanFill(cursor.HeldCoffin))
             {
-                cursor.DropCoffin(cursor.HeldCoffin, Grave);
                 Highlight &= ~HighlightMode.Empty;
+                cursor.DropCoffin(cursor.HeldCoffin, Grave);
             }
             else
             {
