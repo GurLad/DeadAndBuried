@@ -22,6 +22,10 @@ public partial class UITooltipController : Node
             (upright ?
                 tooltip.Size.X * Vector2.Right / 2 :
                 tooltip.Size.Y * Vector2.Up / 2);
+        if (!upright)
+        {
+            tooltip.GlobalPosition += source.Size / 2;
+        }
         tooltip.ShowTooltip(personData, delay);
     }
 

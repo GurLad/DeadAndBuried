@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="2_4e58g"]
 [ext_resource type="Texture2D" uid="uid://cpvddho8tw86c" path="res://Sprites/Coffins/Coffin1.png" id="3_sbsvi"]
 
-[node name="UICoffin" type="MarginContainer" node_paths=PackedStringArray("Icon", "Tooltip")]
+[node name="UICoffin" type="MarginContainer" node_paths=PackedStringArray("Icon")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,7 +14,7 @@ script = ExtResource("1_vk31p")
 Icon = NodePath("Icon")
 BaseModulate = Color(1, 1, 1, 1)
 HoverOutline = Color(1, 1, 1, 1)
-Tooltip = NodePath("")
+Upright = false
 
 [node name="Icon" type="TextureRect" parent="."]
 material = ExtResource("2_4e58g")
