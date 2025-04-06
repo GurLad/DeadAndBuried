@@ -24,6 +24,7 @@ public partial class Level : Node
         Graves.ForEach(a => a.OnFilled += OnGraveFilled);
         UILevel.ScoreDisplay.SetScore(SaveData.Score, false);
         UILevel.NextLevelButton.Disabled = true;
+        MusicController.Play("Levels" + (SaveData.CurrentLevel > 2 ? "2" : "1"));
     }
 
     private void OnGraveFilled(AGrave grave, Coffin coffin, int score)
@@ -46,6 +47,7 @@ public partial class Level : Node
                 SaveData.Graves.AddOrSet(a.Pos, a.Data);
             });
         SaveData.CurrentLevel++;
+        MusicController.Play("Silence");
         SceneController.Current.TransitionToScene("LevelIntro");
     }
 }

@@ -39,7 +39,8 @@ project/assembly_name="DeadAndBuried"
 [file_customization]
 
 folder_colors={
-"res://Fonts/": "teal",
+"res://Fonts/": "green",
+"res://Music/": "teal",
 "res://Scenes/": "blue",
 "res://Scenes/GameScenes/": "purple",
 "res://Scenes/Loaders/": "pink",

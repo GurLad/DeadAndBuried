@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://stgvad1yco08"]
+[gd_scene load_steps=10 format=3 uid="uid://stgvad1yco08"]
 
 [ext_resource type="Script" uid="uid://dlkc1db5e3qlm" path="res://Scripts/Loaders/GraveIcons/GraveIconLoader.cs" id="1_021i6"]
-[ext_resource type="Texture2D" uid="uid://bor8bk2xnagpw" path="res://Sprites/Tombs/TombEmpty.png" id="2_cp0x7"]
+[ext_resource type="Texture2D" uid="uid://dcobauroxqlcg" path="res://Sprites/Tombs/TombEmpty.png" id="2_cp0x7"]
 [ext_resource type="Script" uid="uid://ctlqma7uu0qve" path="res://Scripts/Loaders/GraveIcons/GraveIconLoaderNode.cs" id="3_5jjtp"]
-[ext_resource type="Texture2D" uid="uid://5o7iqpjkce18" path="res://Sprites/Tombs/TombFull1.png" id="4_466qj"]
-[ext_resource type="Texture2D" uid="uid://cjjcnjl35ipny" path="res://Sprites/Tombs/TombFull2.png" id="5_4ayga"]
-[ext_resource type="Texture2D" uid="uid://spq4rs5oems" path="res://Sprites/Tombs/TombFull3.png" id="6_dbsij"]
-[ext_resource type="Texture2D" uid="uid://b0dbyugd0tj8u" path="res://Sprites/Tombs/TombFull4.png" id="7_67d8m"]
-[ext_resource type="Texture2D" uid="uid://bipkj5t2m2jo1" path="res://Sprites/Tombs/TombFull5.png" id="8_5gssd"]
+[ext_resource type="Texture2D" uid="uid://1ur66xcon3f0" path="res://Sprites/Tombs/TombFull1.png" id="4_466qj"]
+[ext_resource type="Texture2D" uid="uid://cb7vpg1t3u131" path="res://Sprites/Tombs/TombFull2.png" id="5_4ayga"]
+[ext_resource type="Texture2D" uid="uid://cab58ysjfljs3" path="res://Sprites/Tombs/TombFull3.png" id="6_dbsij"]
+[ext_resource type="Texture2D" uid="uid://bfbur4iwsaoef" path="res://Sprites/Tombs/TombFull4.png" id="7_67d8m"]
+[ext_resource type="Texture2D" uid="uid://bd4m7x4n4s5kw" path="res://Sprites/Tombs/TombFull5.png" id="8_5gssd"]
+[ext_resource type="Texture2D" uid="uid://cy1vcdjaem6uy" path="res://Sprites/Tombs/TombFullUnderground.png" id="9_dbsij"]
 
 [node name="GraveIconLoader" type="Node"]
 script = ExtResource("1_021i6")
@@ -51,4 +52,17 @@ visible = false
 texture = ExtResource("8_5gssd")
 script = ExtResource("3_5jjtp")
 _graveType = 1
+Filled = true
+
+[node name="TombEmptyUnderground" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_cp0x7")
+script = ExtResource("3_5jjtp")
+_graveType = 2
+
+[node name="TombFullUnderground" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_dbsij")
+script = ExtResource("3_5jjtp")
+_graveType = 2
 Filled = true
