@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class Level : Node
 {
+    private const int MAX_LEVEL = 5;
+
     public static SaveData SaveData { get; } = new SaveData();
 
     [Export] private LevelGenerator Generator;
@@ -48,6 +50,6 @@ public partial class Level : Node
             });
         SaveData.CurrentLevel++;
         MusicController.Play("Silence");
-        SceneController.Current.TransitionToScene("LevelIntro");
+        SceneController.Current.TransitionToScene(SaveData.CurrentLevel > MAX_LEVEL ? "End" : "LevelIntro");
     }
 }
