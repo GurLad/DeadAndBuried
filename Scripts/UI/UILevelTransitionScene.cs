@@ -4,7 +4,6 @@ using System;
 public partial class UILevelTransitionScene : FadeTransition
 {
     [Export] private Label NightLabel;
-    [Export] private float ShowHideTime;
     [Export] private float HoldTime;
     [Export] private float DelayTime;
 
@@ -17,15 +16,14 @@ public partial class UILevelTransitionScene : FadeTransition
         interpolator.Delay(DelayTime);
         interpolator.OnFinish = () =>
         {
-            TransitionIn();
-            interpolator.OnFinish = () =>
+            TransitionIn(() =>
             {
                 interpolator.Delay(HoldTime);
                 interpolator.OnFinish = () =>
                 {
                     TransitionOut(() => SceneController.Current.TransitionToScene("Level"));
                 };
-            };
+            });
         };
     }
 }

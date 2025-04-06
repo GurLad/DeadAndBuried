@@ -3,7 +3,25 @@
 [ext_resource type="Script" uid="uid://dvq5uounul0hw" path="res://Scripts/UI/UILevelTransitionScene.cs" id="1_ow70y"]
 [ext_resource type="FontFile" uid="uid://b4d6lvfaihdaa" path="res://Fonts/VCRFont.ttf" id="2_wvm4j"]
 
-[node name="UILevelTransitionScene" type="ColorRect" node_paths=PackedStringArray("NightLabel")]
+[node name="UILevelTransitionScene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Transit" type="ColorRect" parent="." node_paths=PackedStringArray("NightLabel")]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,11 +30,11 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_ow70y")
 NightLabel = NodePath("Label")
-ShowHideTime = 0.7
-HoldTime = 1.2
+HoldTime = 1.7
 DelayTime = 0.2
+transitionTime = 0.7
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Transit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
