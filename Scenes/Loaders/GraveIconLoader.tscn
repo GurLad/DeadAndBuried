@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://stgvad1yco08"]
+[gd_scene load_steps=12 format=3 uid="uid://stgvad1yco08"]
 
 [ext_resource type="Script" uid="uid://dlkc1db5e3qlm" path="res://Scripts/Loaders/GraveIcons/GraveIconLoader.cs" id="1_021i6"]
 [ext_resource type="Texture2D" uid="uid://dcobauroxqlcg" path="res://Sprites/Tombs/TombEmpty.png" id="2_cp0x7"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bfbur4iwsaoef" path="res://Sprites/Tombs/TombFull4.png" id="7_67d8m"]
 [ext_resource type="Texture2D" uid="uid://bd4m7x4n4s5kw" path="res://Sprites/Tombs/TombFull5.png" id="8_5gssd"]
 [ext_resource type="Texture2D" uid="uid://cy1vcdjaem6uy" path="res://Sprites/Tombs/TombFullUnderground.png" id="9_dbsij"]
+[ext_resource type="Texture2D" uid="uid://24qtvdyoesrr" path="res://Sprites/Tombs/BigHole.png" id="10_5gssd"]
+[ext_resource type="Texture2D" uid="uid://ec2uhfpa67yt" path="res://Sprites/Tombs/Rocket.png" id="11_pn4eu"]
 
 [node name="GraveIconLoader" type="Node"]
 script = ExtResource("1_021i6")
@@ -66,3 +68,15 @@ texture = ExtResource("9_dbsij")
 script = ExtResource("3_5jjtp")
 _graveType = 2
 Filled = true
+
+[node name="TombBigHole" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_5gssd")
+script = ExtResource("3_5jjtp")
+_graveType = 3
+
+[node name="TombRocket" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_pn4eu")
+script = ExtResource("3_5jjtp")
+_graveType = 5

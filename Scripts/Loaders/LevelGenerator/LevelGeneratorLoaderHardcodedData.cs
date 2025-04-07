@@ -156,7 +156,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             {
                 new PersonData("John", "Jones", "Its been a pleasure working with you!", true)
             },
-            massCoffinData: new PersonData("Bag of", "Zombies", "Sorry, were running out of coffins here!", true),
+            massCoffinData: new PersonData("Bunch of", "Zombies", "Sorry, were running out of coffins here!", true),
             singleGravesGridSize: SingleGravesGridSize,
             singleGravesBlacklist: SingleGravesBlacklist,
             graveScoreMultipliers: GraveScoreMultipliers,
@@ -188,7 +188,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             {
                 new PersonData("John", "Jones", "Goodbye, for real this time!", true)
             },
-            massCoffinData: new PersonData("Crate of", "Zombies", "We ran out of coffins. And bags.", true),
+            massCoffinData: new PersonData("Too Many", "Zombies", "These coffins are bigger on the inside, trust me.", true),
             singleGravesGridSize: SingleGravesGridSize,
             singleGravesBlacklist: SingleGravesBlacklist,
             graveScoreMultipliers: GraveScoreMultipliers,

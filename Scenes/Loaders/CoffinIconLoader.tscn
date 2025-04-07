@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkdto537e7ot1"]
+[gd_scene load_steps=12 format=3 uid="uid://bkdto537e7ot1"]
 
 [ext_resource type="Script" uid="uid://61xkk6ad7m5e" path="res://Scripts/Loaders/CoffinIcons/CoffinIconLoader.cs" id="1_5rt2v"]
-[ext_resource type="Texture2D" uid="uid://ccbtdcfmmu0m1" path="res://Sprites/Coffins/Coffin1.png" id="2_slnkd"]
+[ext_resource type="Texture2D" uid="uid://cpvddho8tw86c" path="res://Sprites/Coffins/Coffin1.png" id="2_slnkd"]
 [ext_resource type="Script" uid="uid://b2olpmvcvcj52" path="res://Scripts/Loaders/CoffinIcons/CoffinIconLoaderNode.cs" id="3_p2v7a"]
-[ext_resource type="Texture2D" uid="uid://d2krd3uaxoohl" path="res://Sprites/Coffins/Coffin1Zombie.png" id="4_b655v"]
-[ext_resource type="Texture2D" uid="uid://c23wkgl42sh2l" path="res://Sprites/Coffins/Coffin2.png" id="5_b655v"]
-[ext_resource type="Texture2D" uid="uid://dgh3husg5fhmf" path="res://Sprites/Coffins/Coffin2Zombie.png" id="6_w0epv"]
-[ext_resource type="Texture2D" uid="uid://cpwslh3sf1504" path="res://Sprites/Coffins/Coffin3.png" id="7_dty78"]
-[ext_resource type="Texture2D" uid="uid://vbi726ouuvko" path="res://Sprites/Coffins/Coffin3Zombie.png" id="8_4pph4"]
-[ext_resource type="Texture2D" uid="uid://h425hhiuypho" path="res://Sprites/Coffins/Coffin4.png" id="9_7cwt5"]
-[ext_resource type="Texture2D" uid="uid://ddltjjrytge6d" path="res://Sprites/Coffins/Coffin4Zombie.png" id="10_icsop"]
+[ext_resource type="Texture2D" uid="uid://buuklbg1acbgl" path="res://Sprites/Coffins/Coffin1Zombie.png" id="4_b655v"]
+[ext_resource type="Texture2D" uid="uid://b6imosi5brqar" path="res://Sprites/Coffins/Coffin2.png" id="5_b655v"]
+[ext_resource type="Texture2D" uid="uid://bbuvmp4yq1xch" path="res://Sprites/Coffins/Coffin2Zombie.png" id="6_w0epv"]
+[ext_resource type="Texture2D" uid="uid://ptr1wdjus3o1" path="res://Sprites/Coffins/Coffin3.png" id="7_dty78"]
+[ext_resource type="Texture2D" uid="uid://p8t4n6xt6o20" path="res://Sprites/Coffins/Coffin3Zombie.png" id="8_4pph4"]
+[ext_resource type="Texture2D" uid="uid://u0c2obpm1x07" path="res://Sprites/Coffins/Coffin4.png" id="9_7cwt5"]
+[ext_resource type="Texture2D" uid="uid://ck4tlu4i3l4gw" path="res://Sprites/Coffins/Coffin4Zombie.png" id="10_icsop"]
+[ext_resource type="Texture2D" uid="uid://cv5r684132r7t" path="res://Sprites/Coffins/ZombieMulti10.png" id="11_icsop"]
 
 [node name="CoffinIconLoader" type="Node"]
 script = ExtResource("1_5rt2v")
@@ -61,3 +62,9 @@ visible = false
 texture = ExtResource("10_icsop")
 script = ExtResource("3_p2v7a")
 CoffinType = 5
+
+[node name="Multi1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_icsop")
+script = ExtResource("3_p2v7a")
+CoffinType = 7
