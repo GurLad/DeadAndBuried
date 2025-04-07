@@ -162,7 +162,7 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             graveScoreMultipliers: GraveScoreMultipliers,
             graveCompatibleTypes: new Dictionary<GraveType, CoffinType>()
             {
-                { GraveType.Single, CoffinType.Single },
+                { GraveType.Single, CoffinType.Single | CoffinType.Zombie },
                 { GraveType.Mass, CoffinType.Single | CoffinType.Zombie | CoffinType.Multi },
             },
             assistantType: "1",
@@ -194,15 +194,15 @@ public partial class LevelGeneratorLoader : AGameLoader<LevelGeneratorLoader, Le
             graveScoreMultipliers: GraveScoreMultipliers,
             graveCompatibleTypes: new Dictionary<GraveType, CoffinType>()
             {
-                { GraveType.Single, CoffinType.Single },
+                { GraveType.Single, CoffinType.Single | CoffinType.Zombie },
                 { GraveType.Spaceship, CoffinType.Single | CoffinType.Zombie | CoffinType.Multi },
             },
             assistantType: "1",
             events: new List<string>()
             {
                 "ZSmile: Heeeeeey... I've got " + "good news".RichTextWave().RichTextColor(GREEN_COLOR) + " and " + "bad news.".RichTextWave().RichTextColor(RED_COLOR),
-                "ZOops: Bad news: " + "everyone climbed out of that hole.".RichTextWave().RichTextColor(RED_COLOR),
-                "ZPoint: Good news: " + "I climbed out of that hole!".RichTextWave().RichTextColor(GREEN_COLOR),
+                "ZOops: Bad news - " + "everyone climbed out of that hole.".RichTextWave().RichTextColor(RED_COLOR),
+                "ZPoint: Good news - " + "I climbed out of that hole!".RichTextWave().RichTextColor(GREEN_COLOR),
                 "ZSmile: But don't worry, I think I've got it now. I had a " + "grrrrrrrrreat".RichTextWave().RichTextColor(GREEN_COLOR) + " idea!",
                 "ZWave: We'll send all the zombies to " + "Mars! ".RichTextColor(RED_COLOR) + "There's " + "nooooooo way".RichTextWave().RichTextColor(RED_COLOR) + " they'll ever get back from there!",
                 "ZThink: You can't go deeper than the " + "DEPTHS".RichTextColor(RED_COLOR).RichTextWave() + " of space, after all.",

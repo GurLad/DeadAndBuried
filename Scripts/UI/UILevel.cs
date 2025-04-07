@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class UILevel : Control
 {
@@ -50,7 +51,7 @@ public partial class UILevel : Control
         List<MassGrave> massGraves = Graves.ConvertAll(a => a is MassGrave grave ? grave : null).FindAll(a => a != null);
         if (massGraves.Count > 0 && massGraves.Count <= 1)
         {
-            UICemetery cemetery = InitCemetery<MassGrave>(GraveType.Mass);
+            UICemetery cemetery = InitCemetery<MassGrave>(level.GraveCompatibleTypes.Keys.ToList().Find(a => a != GraveType.Single && a != GraveType.Underground));
             FillCemetery(cemetery, massGraves[0].Type, massGraves);
         }
         else if (massGraves.Count > 0)
@@ -61,7 +62,7 @@ public partial class UILevel : Control
         {
             // Assume 0 is overground and 1 is other always...
             currentCemetery = 0;
-            SwitchCemeteryButton.Rotation = Mathf.Atan2(cemeteries[1].Data.Location.Y, cemeteries[1].Data.Location.X);
+            SwitchCemeteryButton.Rotation = Mathf.Atan2(cemeteries[1].Data.Location.X, cemeteries[1].Data.Location.Y);
             SwitchCemeteryButton.TransitionIn();
             SwitchCemeteryButton.Pressed += () =>
             {
