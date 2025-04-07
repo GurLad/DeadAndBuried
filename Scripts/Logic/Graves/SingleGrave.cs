@@ -25,6 +25,7 @@ public partial class SingleGrave : AGrave
         {
             matchingAdjacent.ForEach(a => a.EmitSignal(SignalName.OnMatched, a));
             EmitSignal(SignalName.OnMatched, this);
+            SoundController.Current.PlaySFX("Match");
             return (1 + matchingAdjacent.Count) * Data.ScoreMultiplier;
         }
         else

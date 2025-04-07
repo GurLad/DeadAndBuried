@@ -18,6 +18,7 @@ public partial class UILevelTransitionScene : FadeTransition
         {
             TransitionIn(() =>
             {
+                SoundController.Current.PlaySFX("NextNight");
                 interpolator.Delay(HoldTime);
                 interpolator.OnFinish = () =>
                 {

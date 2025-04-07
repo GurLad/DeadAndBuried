@@ -46,6 +46,7 @@ public partial class UICursor : Control
         Renderer.Render(coffin);
         Renderer.Visible = true;
         EmitSignal(SignalName.OnPickedUpCoffin, this, coffin);
+        SoundController.Current.PlaySFX("PickUp");
     }
 
     public void DropCoffin(Coffin coffin, AGrave grave)
@@ -61,6 +62,7 @@ public partial class UICursor : Control
         EmitSignal(SignalName.OnDroppedCoffin, this, coffin);
         HeldCoffin = null;
         CoffinHolder = null;
+        SoundController.Current.PlaySFX("Drop");
     }
 
     public void CancelPickUp()

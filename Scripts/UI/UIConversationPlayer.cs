@@ -113,6 +113,7 @@ public partial class UIConversationPlayer : Control
                         lineBaseHeight,
                         Easing.EaseOutQuad));
                 };
+                SoundController.Current.PlaySFX("NextLine");
             }
 
             state = State.Idle;
