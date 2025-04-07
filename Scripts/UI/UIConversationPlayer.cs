@@ -59,6 +59,7 @@ public partial class UIConversationPlayer : Control
             {
                 if (state == State.WaitForInput)
                 {
+                    SoundController.Current.PlaySFX("NextLine");
                     NextLine();
                 }
             }
@@ -113,7 +114,6 @@ public partial class UIConversationPlayer : Control
                         lineBaseHeight,
                         Easing.EaseOutQuad));
                 };
-                SoundController.Current.PlaySFX("NextLine");
             }
 
             state = State.Idle;
