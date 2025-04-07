@@ -35,7 +35,7 @@ mouse_filter = 2
 script = ExtResource("1_r432v")
 ScoreDisplay = NodePath("VBoxContainer/ScoreContent")
 NextLevelButton = NodePath("VBoxContainer/NextLevel")
-SwitchCemeteryButton = NodePath("VBoxContainer/NextCemetery")
+SwitchCemeteryButton = NodePath("VBoxContainer/NextCemetery/NextCemetery")
 CoffinHolder = NodePath("CenterContainer/MarginContainer/ScrollContainer/CoffinsHolder")
 CemeteryHolder = NodePath("CemeteryHolder")
 ChangeCemeteryTime = 0.4
@@ -139,9 +139,16 @@ script = ExtResource("14_5e6dj")
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NextCemetery" type="TextureButton" parent="VBoxContainer"]
+[node name="NextCemetery" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(77, 32)
+layout_mode = 2
+
+[node name="NextCemetery" type="TextureButton" parent="VBoxContainer/NextCemetery"]
 material = ExtResource("13_nl3pf")
 layout_mode = 2
+offset_top = -36.0
+offset_right = 77.0
+offset_bottom = -4.0
 texture_normal = ExtResource("15_nl3pf")
 stretch_mode = 5
 script = ExtResource("14_5e6dj")

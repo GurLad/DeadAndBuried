@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp3woomf4e6qe"]
+[gd_scene load_steps=6 format=3 uid="uid://bp3woomf4e6qe"]
 
 [ext_resource type="Script" uid="uid://df7ulfvumk6kh" path="res://Scripts/Loaders/Cemetery/CemeteryLoader.cs" id="1_scic0"]
 [ext_resource type="Texture2D" uid="uid://cjw01wrv31112" path="res://Sprites/Backgrounds/Overground2.png" id="2_vdkad"]
 [ext_resource type="Texture2D" uid="uid://cr1c6vk2u4hl" path="res://Sprites/Backgrounds/Underground.png" id="3_vis6n"]
+[ext_resource type="Texture2D" uid="uid://dvgfvmqwaa7yc" path="res://Sprites/Backgrounds/BigHole.png" id="4_lkovj"]
+[ext_resource type="Texture2D" uid="uid://j002nsncdkao" path="res://Sprites/Backgrounds/Rocket.png" id="5_dvqwh"]
 
 [node name="CemeteryLoader" type="Node"]
 script = ExtResource("1_scic0")
@@ -17,9 +19,11 @@ texture = ExtResource("3_vis6n")
 
 [node name="Mass" type="Sprite2D" parent="."]
 visible = false
+texture = ExtResource("4_lkovj")
 
 [node name="Burn" type="Sprite2D" parent="."]
 visible = false
 
 [node name="Spaceship" type="Sprite2D" parent="."]
 visible = false
+texture = ExtResource("5_dvqwh")

@@ -67,4 +67,4 @@ CoffinType = 5
 visible = false
 texture = ExtResource("11_icsop")
 script = ExtResource("3_p2v7a")
-CoffinType = 7
+CoffinType = 6

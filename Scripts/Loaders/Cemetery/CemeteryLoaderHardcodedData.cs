@@ -33,7 +33,7 @@ public partial class CemeteryLoader : AGameLoader<CemeteryLoader, CemeteryData>
         new CemeteryData
         (
             type: GraveType.Spaceship,
-            location: Vector2I.Right,
+            location: Vector2I.Left,
             yPositionMod: 0
         ),
     };

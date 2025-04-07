@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3w5lfehp2km2"]
+[gd_scene load_steps=5 format=3 uid="uid://d3w5lfehp2km2"]
 
 [ext_resource type="Script" uid="uid://bpambl27e4na" path="res://Scripts/UI/UIScoreText.cs" id="1_tc3os"]
-[ext_resource type="FontFile" uid="uid://bnfcwysgkkqi8" path="res://Fonts/3x5Mk2Mono.ttf" id="2_b43jb"]
 [ext_resource type="FontFile" uid="uid://cbvpu5p4qvrnu" path="res://Fonts/BetterPixels.ttf" id="3_fkk6u"]
 [ext_resource type="FontFile" uid="uid://d2h7ie7v6r6oi" path="res://Fonts/HelvetiPixel.ttf" id="4_2tqeb"]
 [ext_resource type="FontFile" uid="uid://5orcbu327rix" path="res://Fonts/TomAndJerry.ttf" id="5_1stk3"]
@@ -27,7 +26,6 @@ DisplayTime = 0.9
 FadeTime = 0.2
 OutlineColor = Color(0.203922, 0.192157, 0.156863, 1)
 FontThresolds = Dictionary[int, Font]({
-0: ExtResource("2_b43jb"),
 101: ExtResource("3_fkk6u"),
 1001: ExtResource("4_2tqeb"),
 2001: ExtResource("5_1stk3")

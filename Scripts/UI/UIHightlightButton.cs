@@ -17,7 +17,7 @@ public partial class UIHightlightButton : BaseButton
         ShaderMaterial = Material is ShaderMaterial sm ? sm : null;
         MouseEntered += OnMouseEntered;
         MouseExited += OnMouseExited;
-        PivotOffset = Size / 2 + Vector2.Right * (Size.X / 2 + 5f); // wtf
+        PivotOffset = Size / 2;// + Vector2.Right * (Size.X / 2 + 5f); // wtf
     }
 
     protected virtual void OnMouseEntered()

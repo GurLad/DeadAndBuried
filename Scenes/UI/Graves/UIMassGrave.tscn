@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://166ul8to8vkx" path="res://Scenes/UI/Graves/AUIGrave.tscn" id="1_srbmt"]
 [ext_resource type="Script" uid="uid://b35hexmeu455j" path="res://Scripts/UI/Graves/UIMassGrave.cs" id="2_d5aj2"]
 
-[node name="UIMassGrave" node_paths=PackedStringArray("Tooltip") instance=ExtResource("1_srbmt")]
+[node name="UIMassGrave" node_paths=PackedStringArray("Icon") instance=ExtResource("1_srbmt")]
 script = ExtResource("2_d5aj2")
+Icon = NodePath("TextureRect")
+EmptyOutline = Color(0.203922, 0.192157, 0.156863, 1)
 CanDropOutline = Color(0.639216, 0.619608, 0.333333, 1)
 HoverOutline = Color(1, 1, 1, 1)
-Tooltip = NodePath("UITooltipUpright")

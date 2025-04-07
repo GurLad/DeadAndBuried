@@ -19,7 +19,7 @@ public partial class UIVFXController : Node
     {
         UIScoreText damageText = SceneScoreText.Instantiate<UIScoreText>();
         AddChild(damageText);
-        Vector2 pos = control.GlobalPosition;// + damageText.Size / 2;
+        Vector2 pos = control.GlobalPosition + control.Size / 2 - damageText.Size / 2;
         damageText.Display(amount, pos);
         damageText.Position = pos + new Vector2(ExtensionMethods.RNG.Next(-5, 6), ExtensionMethods.RNG.Next(-5, 6));
     }
