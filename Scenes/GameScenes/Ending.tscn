@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc2vu7dvau5pn"]
+
+[ext_resource type="Texture2D" uid="uid://p72rc5wdnqq0" path="res://Sprites/Backgrounds/Ending.png" id="1_a0i1r"]
+[ext_resource type="FontFile" uid="uid://5orcbu327rix" path="res://Fonts/TomAndJerry.ttf" id="2_2a6k8"]
+[ext_resource type="Texture2D" uid="uid://cthegyku6yk3n" path="res://Sprites/UI/Quit.png" id="3_32ocg"]
+[ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="3_oq27s"]
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_a0i1r")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_right = 130
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_2a6k8")
+text = "Thanks to the combined efforts of Elradi Dead - you - and John Jones, the first undead colony was established in the DEPTHS of space.
+
+THE END
+Final score: {0}"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton" type="TextureButton" parent="."]
+material = ExtResource("3_oq27s")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_32ocg")
+stretch_mode = 3

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://6niblvdcgmys"]
+[gd_scene load_steps=10 format=3 uid="uid://6niblvdcgmys"]
 
 [ext_resource type="Script" uid="uid://cg56jbac0dqob" path="res://Scripts/GodotUtils/SceneController.cs" id="1_xofhr"]
 [ext_resource type="PackedScene" uid="uid://cjrfk3c8pc4o8" path="res://Scenes/GameScenes/GameScene.tscn" id="2_2khot"]
 [ext_resource type="Script" uid="uid://dyne444lbhu14" path="res://Scripts/GodotUtils/Transitions/FadeTransition.cs" id="2_ulkda"]
 [ext_resource type="PackedScene" uid="uid://dvx171hjny3ak" path="res://Scenes/UI/UILevelTransitionScene.tscn" id="3_jo4r7"]
+[ext_resource type="PackedScene" uid="uid://dc2vu7dvau5pn" path="res://Scenes/GameScenes/Ending.tscn" id="4_db6av"]
 [ext_resource type="Script" uid="uid://4q05wml5waw" path="res://Scripts/GodotUtils/MusicController.cs" id="5_m2gdr"]
 [ext_resource type="AudioStream" uid="uid://ctokhk5a0174k" path="res://Music/GravesAreFun.wav" id="6_db6av"]
 [ext_resource type="AudioStream" uid="uid://bfpavf5wre2e7" path="res://Music/BrainsAreFun.wav" id="7_jxvmi"]
@@ -13,6 +14,7 @@
 script = ExtResource("1_xofhr")
 firstScene = "LevelIntro"
 scenes = Dictionary[String, PackedScene]({
+"End": ExtResource("4_db6av"),
 "Level": ExtResource("2_2khot"),
 "LevelIntro": ExtResource("3_jo4r7")
 })
