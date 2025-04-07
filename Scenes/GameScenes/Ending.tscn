@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc2vu7dvau5pn"]
+[gd_scene load_steps=7 format=3 uid="uid://dc2vu7dvau5pn"]
 
 [ext_resource type="Texture2D" uid="uid://p72rc5wdnqq0" path="res://Sprites/Backgrounds/Ending.png" id="1_a0i1r"]
+[ext_resource type="Script" uid="uid://bupq727v4yot3" path="res://Scripts/UI/UIEnding.cs" id="1_f0mbl"]
 [ext_resource type="FontFile" uid="uid://5orcbu327rix" path="res://Fonts/TomAndJerry.ttf" id="2_2a6k8"]
 [ext_resource type="Texture2D" uid="uid://cthegyku6yk3n" path="res://Sprites/UI/Quit.png" id="3_32ocg"]
 [ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="3_oq27s"]
+[ext_resource type="Script" uid="uid://sy6xgv453a1b" path="res://Scripts/UI/UIQuitButton.cs" id="6_0f4p4"]
 
-[node name="Ending" type="Control"]
+[node name="Ending" type="Control" node_paths=PackedStringArray("label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_f0mbl")
+label = NodePath("MarginContainer/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -57,3 +61,4 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("3_32ocg")
 stretch_mode = 3
+script = ExtResource("6_0f4p4")
