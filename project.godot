@@ -41,6 +41,7 @@ project/assembly_name="DeadAndBuried"
 folder_colors={
 "res://Fonts/": "green",
 "res://Music/": "teal",
+"res://SFX/": "pink",
 "res://Scenes/": "blue",
 "res://Scenes/GameScenes/": "purple",
 "res://Scenes/Loaders/": "pink",
